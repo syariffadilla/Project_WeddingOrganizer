@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\VendorController;
@@ -32,8 +33,8 @@ Auth::routes();
 
 Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::post('/landing/booking', [LandingController::class, 'booking'])->name('user.booking');
-    Route::put('/landing/checjout/{id}', [LandingController::class, 'Checkout'])->name('user.Checkout');
-
+    Route::put('/landing/checkout/{id}', [LandingController::class, 'Checkout'])->name('user.Checkout');
+    Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('user.cart');
 
 

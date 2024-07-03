@@ -25,12 +25,12 @@
                 <div class="col-xl-12 col-md-12 text-center">
                     <div class="breadcrumb__content z-index">
                         <div class="breadcrumb__section-title-box">
-                            <h3 class="breadcrumb__title">Paket Details</h3>
+                            <h3 class="breadcrumb__title">Shop Details</h3>
                         </div>
                         <div class="breadcrumb__list">
                             <span><a href="index.html">Home</a></span>
                             <span class="dvdr"><i class="fa-regular fa-chevron-right"></i></span>
-                            <span>Paket Details</span>
+                            <span>Shop Details</span>
                         </div>
                     </div>
                 </div>
@@ -47,24 +47,27 @@
                 <div class="col-xl-5 col-lg-5">
                     <div class="rr-shop-details-thumb-wrapper">
                         <figure class="rr-shop-media">
-                            <img src="{{asset('vendor/' . $vendor->foto)}}" height="570px" width="570px" class="img-fluid" alt="">
+                            <img src="{{asset('landing/assets/img/shop/shop-image.jpg')}}" class="img-fluid" alt="">
                         </figure>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-7">
                     <div class="rr-shop-details_main ml-20">
                         <div class="rr-shop-details__right-warp">
-                            <h3 class="rr-shop-details__title-sm">{{$vendor->nama_vendor}}</h3>
+                            <h3 class="rr-shop-details__title-sm">Paper Cups Coffee</h3>
                             <div class="rr-shop-details__price d-flex align-items-center">
                                 <div class="price">
                                     <div class="woocs_price_code mb-20">
                                         <del aria-hidden="true">$270.50</del>
-                                        <span class="rr-shop-new-price">Rp. {{ number_format($vendor->harga, 0,',','.')   }}</span>
+                                        <span class="rr-shop-new-price">$230.50</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="rr-shop-shop-details__short-description">
-                                <p>{{$vendor->keterangan}}.</p>
+                                <p>Aliquam tempus libero eget arcu euismod, in bibendum nisl posuere. Donec gravida
+                                    <br /> sem eu dolor rhoncus viverra. In vel cursus ante. Quisque nec augue
+                                    sollicitudin erat <br /> vehicula tincidunt. Morbi in nisi nisi. Proin eu eros
+                                    diam.Quisque nec augue sollicitudin <br /> erat vehicula tincidunt.</p>
                             </div>
                             <div class="rr-shop-details__quantity-wrap d-flex align-items-center">
                                 <div class="rr-shop-details-action__wrapper">
@@ -73,14 +76,11 @@
                                         <div class="rr-shop-details-cart mr-10">
                                             <div class="rr-shop-details__quantity p-relative">
                                                 <div class="rr-cart-minus"><i class="fal fa-minus"></i></div>
-                                                <input type="text" id="quantity" value="1">
-                                                <input type="hidden" id="produk_id" value="{{ $vendor->vendor_id }}">
-                                                <input type="hidden" id="user_id" value="{{ $user->id }}">
+                                                <input type="text" value="1">
                                                 <div class="rr-cart-plus"><i class="fal fa-plus"></i></div>
                                             </div>
                                         </div>
-                                        <button type="button" id="addToCart" class="rr-card">Add to Cart</button>
-                                   
+                                        <button class="rr-card">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -293,47 +293,4 @@
 </main>
 
 
-@endsection
-
-
-@section('js-tambahan')
-<script>
-    $(document).ready(function() {
-        $('#addToCart').click(function() {
-            var produk_id = $('#produk_id').val();
-            var user_id = $('#user_id').val();
-            var quantity = $('#quantity').val();
-    
-            $.ajax({
-                url: "{{ route('cart.store') }}",
-                type: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    produk_id: produk_id,
-                    user_id: user_id,
-                    quantity: quantity
-                },
-                success: function(response) {
-                    alert(response.success);
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        });
-    
-        // Event listener untuk menambah dan mengurangi quantity
-        $('.rr-cart-minus').click(function() {
-            var quantity = parseInt($('#quantity').val());
-            if (quantity > 1) {
-                $('#quantity').val(quantity - 1);
-            }
-        });
-    
-        $('.rr-cart-plus').click(function() {
-            var quantity = parseInt($('#quantity').val());
-            $('#quantity').val(quantity + 1);
-        });
-    });
-    </script>
 @endsection

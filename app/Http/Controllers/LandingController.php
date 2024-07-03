@@ -18,13 +18,30 @@ class LandingController extends Controller
     }
 
     public function detailPaket($id){
-        $vendor = Vendor::orderBy('vendor_id')->take(5)->get();
-        $paket = Paket::find($id);
-        $admin = User::where('role', 1);
+        $vendor = Vendor::find($id);
+        
+        // dd($vendor);
+        if (!$vendor) {
+            abort(404); // Mengirim respons 404 jika vendor tidak ditemukan
+        }
+        
+        // Atau jika Anda ingin menggunakan findOrFail yang otomatis mengirimkan respons 404 jika tidak ditemukan
+        // $vendor = Vendor::findOrFail($id);
+
+         // Mendapatkan pengguna yang sedang login
+         $user = Auth::user();
+
+        //  dd($user);
+    
+        // dd($vendor);
         // @dd($admin);
         // @dd($paket);
-        return view('content.dashboard.landing.detail_paket', compact('paket', 'vendor'));
+        return view('content.dashboard.landing.detail_paket', compact('vendor', 'user'));
     }
+    
+
+
+    
     public function booking(Request $request)
     {
         // Validate the request data if needed

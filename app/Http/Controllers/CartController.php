@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cart;
+
 
 class CartController extends Controller
 {
@@ -34,7 +36,19 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'produk_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'quantity' => 'required|integer|min:1',
+        ]);
+
+        $cart = new Cart();
+        $cart->produk_id = $request->produk_id;
+        $cart->user_id = $request->user_id;
+        $cart->quantity = $request->quantity;
+        $cart->save();
+
+        return response()->json(['success' => 'Produk berhasil ditambahkan ke keranjang']);
     }
 
     /**
@@ -45,7 +59,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('content.dashboard.landing.detailCart');
     }
 
     /**

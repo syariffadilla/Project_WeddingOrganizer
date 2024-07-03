@@ -321,11 +321,11 @@
                <div class="rr-shop-thumb">
                   <img src="{{asset('landing/assets/img/shop/image.jpg')}}" alt="">
                   <div class="rr-shop-cart-btn text-center">
-                     <a href="shop-details.html">Add To Cart</a>
+                     <a href="{{ route('detailPaket', ['id' => $item->vendor_id]) }}">Add To Cart</a>
                   </div>
                </div>
                <div class="rr-shop-content text-center">
-                  <h4 class="rr-shop-title"><a href="shop-details.html">{{ $item->nama_vendor }}</a></h4>
+                  <h4 class="rr-shop-title"><a href="{{ route('detailPaket', ['id' => $item->vendor_id]) }}">{{ $item->nama_vendor }}</a></h4>
                   <span>Rp. {{number_format($item->harga, 0, ',', '.')}} </span>
                </div>
             </div>
