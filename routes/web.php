@@ -27,6 +27,7 @@ Route::get('/about', [LandingController::class, 'about'])->name('about');
 Route::get('/vendorLanding', [LandingController::class, 'vendor'])->name('vendorLanding');
 Route::get('/paketLanding', [LandingController::class, 'paket'])->name('paketLanding');
 Route::get('/detailPaket/{id}', [LandingController::class, 'detailPaket'])->name('detailPaket');
+Route::get('/check-auth', [CartController::class, 'checkAuth'])->name('check-auth');
 
 //paket
 Auth::routes();

@@ -72,15 +72,22 @@
                                     <div class="rr-shop-details-price-cart d-flex align-items-center mb-30 ">
                                         <div class="rr-shop-details-cart mr-10">
                                             <div class="rr-shop-details__quantity p-relative">
-                                                <div class="rr-cart-minus"><i class="fal fa-minus"></i></div>
-                                                <input type="text" id="quantity" value="1">
-                                                <input type="hidden" id="produk_id" value="{{ $vendor->vendor_id }}">
-                                                <input type="hidden" id="user_id" value="{{ $user->id }}">
-                                                <div class="rr-cart-plus"><i class="fal fa-plus"></i></div>
-                                            </div>
-                                        </div>
-                                        <button type="button" id="addToCart" class="rr-card">Add to Cart</button>
-                                   
+                                                <form action="{{ route('cart.store') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="id_product" value="{{ $vendor->vendor_id }}">
+                                                    <input type="hidden" name="id_user" value="{{ optional(auth()->user())->id }}">
+                                                    <input type="hidden" name="quantity" value="1">
+
+                                                    <!-- Quantity adjustment UI (optional) -->
+                                                    <div class="rr-shop-details__quantity p-relative">
+                                                        <div class="rr-cart-minus"><i class="fal fa-minus"></i></div>
+                                                        <input type="text" id="quantity" name="quantity" value="1">
+                                                        <div class="rr-cart-plus"><i class="fal fa-plus"></i></div>
+                                                    </div>
+
+                                                    <button type="submit" class="rr-card">Add to Cart</button>
+                                                </form>
+
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +212,7 @@
                                                 </div>
                                                 <div class="product-btn">
                                                     <button class="rr-card">Submit</button>
-                                                </div>                                                
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +221,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
   <!-- shop area start -->
@@ -293,47 +300,22 @@
 </main>
 
 
+
+<!-- Include this code where you want to display notifications -->
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+
+@if(session()->has('error'))
+    <div class="alert alert-danger">
+        {{ session()->get('error') }}
+    </div>
+@endif
+
+
 @endsection
 
 
-@section('js-tambahan')
-<script>
-    $(document).ready(function() {
-        $('#addToCart').click(function() {
-            var produk_id = $('#produk_id').val();
-            var user_id = $('#user_id').val();
-            var quantity = $('#quantity').val();
-    
-            $.ajax({
-                url: "{{ route('cart.store') }}",
-                type: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    produk_id: produk_id,
-                    user_id: user_id,
-                    quantity: quantity
-                },
-                success: function(response) {
-                    alert(response.success);
-                },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
-            });
-        });
-    
-        // Event listener untuk menambah dan mengurangi quantity
-        $('.rr-cart-minus').click(function() {
-            var quantity = parseInt($('#quantity').val());
-            if (quantity > 1) {
-                $('#quantity').val(quantity - 1);
-            }
-        });
-    
-        $('.rr-cart-plus').click(function() {
-            var quantity = parseInt($('#quantity').val());
-            $('#quantity').val(quantity + 1);
-        });
-    });
-    </script>
-@endsection
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 
 class CartController extends Controller
@@ -36,19 +37,40 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'produk_id' => 'required|integer',
-            'user_id' => 'required|integer',
-            'quantity' => 'required|integer|min:1',
-        ]);
+        try {
+            $request->validate([
+                'id_product' => 'required|integer',
+                'id_user' => 'required|integer',
+                'quantity' => 'required|integer|min:1',
+            ]);
 
-        $cart = new Cart();
-        $cart->produk_id = $request->produk_id;
-        $cart->user_id = $request->user_id;
-        $cart->quantity = $request->quantity;
-        $cart->save();
+            $cart = new Cart();
+            $cart->id_product = $request->id_product;
+            $cart->id_user = $request->id_user;
+            $cart->quantity = $request->quantity;
+            $cart->save();
 
-        return response()->json(['success' => 'Produk berhasil ditambahkan ke keranjang']);
+            // Set flash session message
+            $request->session()->flash('success', 'Produk berhasil ditambahkan ke keranjang');
+
+            // Redirect back to the previous page
+            return redirect()->back();
+        } catch (\Exception $e) {
+            // Set flash session message for error (optional)
+            $request->session()->flash('error', $e->getMessage());
+
+            return redirect()->back()->withInput(); // Redirect back with input data
+        }
+    }
+
+
+    public function checkAuth()
+    {
+        if (Auth::check()) {
+            return response()->json(['authenticated' => true]);
+        } else {
+            return response()->json(['authenticated' => false]);
+        }
     }
 
     /**

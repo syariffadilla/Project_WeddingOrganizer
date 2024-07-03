@@ -9,8 +9,9 @@ class Cart extends Model
 {
     use HasFactory;
 
-    protected $table = 'booking';
-    protected $guarded = ['id'];
+    protected $table = 'cart';
+    protected $guarded = ['id']; // Tambahkan kolom lainnya jika diperlukan
+
 
     // Definisikan nama kolom timestamps jika berbeda dari default
     const CREATED_AT = 'created_at';
