@@ -13,8 +13,8 @@ class Paket extends Model
     protected $primaryKey = 'paket_id'; // Replace 'transaksi_id' with the actual primary key column name
     protected $guarded = ['paket_id']; // Specify the primary key column name in the 'guarded' property
 
-    public function bookings()
+    public function carts()
     {
-        return $this->hasMany(Booking::class, 'paket_id');
+        return $this->hasMany(Cart::class, 'id_paket');
     }
 }

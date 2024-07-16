@@ -2,6 +2,24 @@
 @section('main')
 
 
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
+
 <main>
 
     <!-- breadcrumb area start -->
@@ -129,11 +147,12 @@
                                                     @csrf
                                                     <input type="hidden" name="id_product" value="{{ $vendor->vendor_id }}">
                                                     <input type="hidden" name="id_user" value="{{ optional(auth()->user())->id }}">
-                                                    <input type="hidden" name="quantity" value="1">
-
-
+                                                    <input type="hidden" name="id_paket" value="{{ $vendor->paket_id }}">
+                                                    <input type="hidden" name="nama_paket" value="{{ $vendor->nama_paket }}">
                                                     <button type="submit" class="rr-card">Add to Cart</button>
                                                 </form>
+
+
 
                                     </div>
                                 </div>
@@ -215,12 +234,12 @@
                                                 <div class="rr-shop-thumb">
                                                     <img src="{{asset('vendor/' . $item->foto)}}" alt="">
                                                     <div class="rr-shop-cart-btn text-center">
-                                                        <a href="shop-details.html">Add To Cart</a>
+                                                        <button type="submit" class="rr-card">Add to Cart</button>
                                                     </div>
                                                 </div>
                                                 <div class="rr-shop-content text-center">
                                                     <h4 class="rr-shop-title"><a href="shop-details.html">{{ $item->nama_vendor }}</a></h4>
-                                                    <span>$380.00</span>
+                                                    <span>Rp. {{ number_format($item->harga, 0,',','.')   }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,18 +307,6 @@
 
 
 
-<!-- Include this code where you want to display notifications -->
-@if(session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
-    </div>
-@endif
-
-@if(session()->has('error'))
-    <div class="alert alert-danger">
-        {{ session()->get('error') }}
-    </div>
-@endif
 
 
 @endsection

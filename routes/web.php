@@ -28,6 +28,8 @@ Route::get('/vendorLanding', [LandingController::class, 'vendor'])->name('vendor
 Route::get('/paketLanding', [LandingController::class, 'paket'])->name('paketLanding');
 Route::get('/detailPaket/{id}', [LandingController::class, 'detailPaket'])->name('detailPaket');
 Route::get('/check-auth', [CartController::class, 'checkAuth'])->name('check-auth');
+Route::get('/cart/count', [CartController::class, 'countCartItemsAjax'])->name('cart.count');
+
 
 //paket
 Auth::routes();
@@ -37,6 +39,10 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::put('/landing/checkout/{id}', [LandingController::class, 'Checkout'])->name('user.Checkout');
     Route::post('/cart/store', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('user.cart');
+    Route::post('/vendor/add', [VendorController::class, 'addVendor'])->name('vendor.add');
+    Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
+
+
 
 
 

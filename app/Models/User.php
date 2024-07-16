@@ -47,6 +47,21 @@ class User extends Authenticatable
     ];
 
 
+   /**
+     * Define the relationship with Cart model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'id_user');
+    }
+
+    /**
+     * Define the relationship with Booking model.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function bookings()
     {
         return $this->hasMany(Booking::class, 'user_id');

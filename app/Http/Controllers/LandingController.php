@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Paket;
 use App\Models\User;
 use App\Models\Booking;
+use App\Models\Cart;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,8 @@ class LandingController extends Controller
     public function index(){
         $data['paket'] = Paket::all();
         $data['vendor'] = Vendor::all();
+
+
         return view('content.dashboard.landing.index', $data);
     }
 

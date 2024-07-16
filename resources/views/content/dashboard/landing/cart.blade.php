@@ -51,82 +51,60 @@
                                     <th class="product-remove"></th>
                                     <th class="cart-product-name">Product</th>
                                     <th class="product-price"> Price</th>
-                                    <th class="product-quantity">Quantity</th>
+
                                     <th class="product-subtotal">Total</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($cart as $item)
+
                                 <tr>
                                     <td class="product-remove">
-                                        <a href="#">
-                                        <svg width="10" height="10"
-                                                viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 1L1 9" stroke="#001D08" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M1 1L9 9" stroke="#001D08" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
+                                        <a href="#" class="delete-cart-item" data-id="{{ $item->id }}">
+                                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 1L1 9" stroke="#001D08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M1 1L9 9" stroke="#001D08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
                                         </a>
                                     </td>
+
                                     <td class="product-thumbnail d-flex align-items-center">
                                         <a href="shop-details.html">
-                                            <img src="assets/img/shop/cart-img.jpg" alt="img">
+                                            <img src="{{asset('paket/' . $item->paket->foto1)}}" width="100px" height="100px" alt="img">
                                         </a>
                                         <div class="product-thumbnail__wrapper">
-                                            <div class="product-name">Bridal Flower</div>
-                                            <span class="product-size">Color Burly Wood; Size M <br/> Print Custom</span>
+                                            <div class="product-name">{{ $item->paket->nama_paket }}</div>
+                                            <span class="product-size">Wajib DP</span>
                                         </div>
                                     </td>
 
-                                    <td class="product-price"><span class="amount amount-2">$230.50</span></td>
+                                    <td class="product-price"><span class="amount amount-2">Rp. {{ number_format($item->paket->harga, 0,',','.')   }}</span></td>
 
-                                    <td class="product-quantity-2 text-center">
-                                        <div class="rr-shop-details__quantity-2 p-relative">
-                                            <span class="rr-shop-minus"><i class="far fa-minus"></i></span>
-                                            <input type="text" value="1">
-                                            <span class="rr-shop-plus"><i class="far fa-plus"></i></span>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$230.50</span></td>
+
+                                    <td class="product-subtotal"><span class="amount">Rp. {{ number_format($item->paket->harga, 0,',','.')   }}</span></td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                     <td class="product-remove">
-                                        <a href="#">
-                                        <svg width="10" height="10"
-                                                viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 1L1 9" stroke="#001D08" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M1 1L9 9" stroke="#001D08" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        </a>
+
                                     </td>
                                     <td class="product-thumbnail d-flex align-items-center">
-                                        <a href="shop-details.html">
-                                            <img src="assets/img/shop/cart-img01.jpg" alt="img">
-                                        </a>
-                                        <div class="product-thumbnail__wrapper">
-                                            <div class="product-name">Wedding White Shoes</div>
-                                            <span class="product-size">Color Black; Size M <br/>
-                                                Print Custom</span>
+
+                                            <div class="product-name"></div>
+                                            <span class="product-size"></span>
                                         </div>
                                     </td>
 
-                                    <td class="product-price"><span class="amount amount-2">$230.50</span></td>
+                                    <td class="product-price"><span class="amount amount-2"></td>
 
-                                    <td class="product-quantity-2 text-center">
-                                        <div class="rr-shop-details__quantity-2 p-relative">
-                                            <span class="rr-shop-minus"><i class="far fa-minus"></i></span>
-                                            <input type="text" value="1">
-                                            <span class="rr-shop-plus"><i class="far fa-plus"></i></span>
-                                        </div>
-                                    </td>
-                                     <td class="product-subtotal"><span class="amount">$230.50</span></td>
+
+                                    <td class="product-subtotal"><span class="amount">Rp. {{ number_format($total, 0,',','.')   }}</span></td>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
-                  
+
                 </div>
             </div>
         </div>
@@ -135,4 +113,32 @@
 </main>
 
 
+@endsection
+
+@section('js-tambahan')
+<script>
+    $(document).ready(function() {
+        $('.delete-cart-item').on('click', function(e) {
+            e.preventDefault();
+            var itemId = $(this).data('id');
+            var csrfToken = '{{ csrf_token() }}';
+
+            $.ajax({
+                url: '/cart/' + itemId,
+                type: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                },
+                success: function(response) {
+                    alert(response.message); // Tampilkan alert dengan pesan dari response
+                    $('#cart-item-' + itemId).remove(); // Hapus elemen HTML dari keranjang yang dihapus
+                },
+                error: function(xhr) {
+                    alert('Error deleting item.');
+                    console.log(xhr);
+                }
+            });
+        });
+    });
+</script>
 @endsection

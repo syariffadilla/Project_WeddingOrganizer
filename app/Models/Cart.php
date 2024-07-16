@@ -10,10 +10,21 @@ class Cart extends Model
     use HasFactory;
 
     protected $table = 'cart';
-    protected $guarded = ['id']; // Tambahkan kolom lainnya jika diperlukan
+    protected $fillable = [
+        'id_product',
+        'id_user',
+        'id_paket',
+        'nama_paket',
+    ];
 
 
-    // Definisikan nama kolom timestamps jika berbeda dari default
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_At';
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function paket()
+    {
+        return $this->belongsTo(Paket::class, 'id_paket');
+    }
 }

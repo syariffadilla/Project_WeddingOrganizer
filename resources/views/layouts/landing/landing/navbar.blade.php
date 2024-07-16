@@ -201,14 +201,14 @@
           <div class="row align-items-center">
              <div class="col-xl-2 col-lg-5 col-5">
                 <div class="rr-header-logo">
-                   <a href="index.html"><img src="{{asset('logo-2-removebg-preview.png')}}" alt="img"></a>
+                   <a href="index.html"><img src="{{asset('logo-2-removebg-preview.png')}}" height="50px" alt="img"></a>
                 </div>
              </div>
              <div class="col-xl-8 col-lg-1 col-1">
                 <div class="rr-header-main-menu d-none d-xl-block mr-80 p-relative">
                    <nav class="rr-main-menu-content text-end rr-header-1-before">
                       <ul>
-                      
+
                          <li><a href="about.html">Home</a></li>
                          <li><a href="{{route('about')}}">about us</a></li>
                          <li class="has-dropdown">
@@ -225,8 +225,8 @@
                                <li><a href="sing-in.html">Sing In</a></li>
                             </ul>
                          </li>
-                       
-                     
+
+
                          <li><a href="contact.html">Contact</a></li>
                       </ul>
                    </nav>
@@ -261,7 +261,7 @@
                                d="M10.3889 6.60001C10.3889 7.34261 10.0845 8.0548 9.54273 8.57991C9.00095 9.10501 8.26615 9.40001 7.49997 9.40001C6.73379 9.40001 5.99899 9.10501 5.45722 8.57991C4.91545 8.0548 4.61108 7.34261 4.61108 6.60001"
                                stroke="#051145" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                          </svg>
-                         <span>0</span>
+                         <span>2</span>
                       </a>
                    </div>
                    <div class="rr-header-contat d-none d-md-block ml-35">

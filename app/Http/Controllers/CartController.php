@@ -16,7 +16,27 @@ class CartController extends Controller
      */
     public function index()
     {
-        return view('content.dashboard.landing.cart');
+        // Mengambil user yang sedang login
+        $user = Auth::user();
+
+        // Jika Anda memiliki relasi antara User dan Cart, misalnya dengan menggunakan Eloquent Relationship
+        // Anda bisa mengambil cart dari user tersebut dengan cara seperti ini:
+        // $cart = $user->cart; // Ini contoh jika menggunakan relasi 'cart' di model User
+
+        // Jika tidak ada relasi, Anda bisa mencari cart secara langsung berdasarkan user_id
+        // Misalnya jika user_id disimpan di kolom user_id di tabel Cart:
+        $cart = Cart::where('id_user', $user->id)
+        ->with('paket') // Mengikutsertakan relasi 'paket'
+        ->get();
+        // dd($cart);
+        // Kemudian kirim data cart ke view
+
+
+        $total = $cart->sum(function ($carts) {
+            return $carts->paket->harga;
+        });
+
+        return view('content.dashboard.landing.cart', compact('cart','total'));
     }
 
     /**
@@ -35,33 +55,60 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     try {
+    //         $request->validate([
+    //             'id_product' => 'required|integer',
+    //             'id_user' => 'required|integer',
+    //             'quantity' => 'required|integer|min:1',
+    //         ]);
+
+    //         $cart = new Cart();
+    //         $cart->id_product = $request->id_product;
+    //         $cart->id_user = $request->id_user;
+    //         $cart->quantity = $request->quantity;
+    //         $cart->save();
+
+    //         // Set flash session message
+    //         $request->session()->flash('success', 'Produk berhasil ditambahkan ke keranjang');
+
+    //         // Redirect back to the previous page
+    //         return redirect()->back();
+    //     } catch (\Exception $e) {
+    //         // Set flash session message for error (optional)
+    //         $request->session()->flash('error', $e->getMessage());
+
+    //         return redirect()->back()->withInput(); // Redirect back with input data
+    //     }
+    // }
+
+    public function countCartItemsAjax()
+    {
+        $totalItems = Cart::count();
+
+        return response()->json(['totalItems' => $totalItems]);
+    }
+
     public function store(Request $request)
     {
-        try {
-            $request->validate([
-                'id_product' => 'required|integer',
-                'id_user' => 'required|integer',
-                'quantity' => 'required|integer|min:1',
-            ]);
 
-            $cart = new Cart();
-            $cart->id_product = $request->id_product;
-            $cart->id_user = $request->id_user;
-            $cart->quantity = $request->quantity;
-            $cart->save();
+        // dd($request);
+        // Validate data
+        $validatedData = $request->validate([
 
-            // Set flash session message
-            $request->session()->flash('success', 'Produk berhasil ditambahkan ke keranjang');
+            'id_user' => 'required|integer',
+            'id_paket' => 'required|integer',
+            'nama_paket' => 'required|string|max:100',
+        ]);
 
-            // Redirect back to the previous page
-            return redirect()->back();
-        } catch (\Exception $e) {
-            // Set flash session message for error (optional)
-            $request->session()->flash('error', $e->getMessage());
+        // Create and store the cart item
+        $cart = Cart::create($validatedData);
 
-            return redirect()->back()->withInput(); // Redirect back with input data
-        }
+        // If successfully stored, redirect with success message
+        return redirect()->back()->with('success', 'Item berhasil ditambahkan ke keranjang!');
     }
+
 
 
     public function checkAuth()
@@ -115,6 +162,9 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::findOrFail($id);
+        $cart->delete();
+
+        return response()->json(['message' => 'Item has been deleted successfully.']);
     }
 }
