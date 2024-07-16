@@ -17,14 +17,22 @@ class LandingController extends Controller
         return view('content.dashboard.landing.index', $data);
     }
 
+    public function paket(){
+        $data['paket'] = Paket::all();
+        $data['vendor'] = Vendor::all();
+        return view('content.dashboard.landing.index', $data);
+    }
+
+
     public function detailPaket($id){
-        $vendor = Vendor::find($id);
-        
+        $vendor = Paket::find($id);
+        $tambahan = Vendor::all();
+
         // dd($vendor);
         if (!$vendor) {
             abort(404); // Mengirim respons 404 jika vendor tidak ditemukan
         }
-        
+
         // Atau jika Anda ingin menggunakan findOrFail yang otomatis mengirimkan respons 404 jika tidak ditemukan
         // $vendor = Vendor::findOrFail($id);
 
@@ -32,16 +40,16 @@ class LandingController extends Controller
          $user = Auth::user();
 
         //  dd($user);
-    
+
         // dd($vendor);
         // @dd($admin);
         // @dd($paket);
-        return view('content.dashboard.landing.detail_paket', compact('vendor', 'user'));
+        return view('content.dashboard.landing.detail_paket', compact('vendor', 'user','tambahan'));
     }
-    
 
 
-    
+
+
     public function booking(Request $request)
     {
         // Validate the request data if needed

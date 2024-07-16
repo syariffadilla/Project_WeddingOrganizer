@@ -8,7 +8,7 @@
       </button>
    </div>
    <!-- back to top end -->
-  
+
    <!-- search popup start -->
    <div class="search__popup">
       <div class="container">
@@ -18,7 +18,7 @@
                   <div class="search__top d-flex justify-content-between align-items-center">
                      <div class="search__logo">
                         <a href="index.html">
-                           <img src="{{asset('landing/assets/img/logo/logo-white.png')}}" alt="img">
+                           <img src="{{asset('landing/assets/img/logo/lo  white.png')}}" alt="img">
                         </a>
                      </div>
                      <div class="search__close">
@@ -64,7 +64,7 @@
          </div>
          <div class="rroffcanvas__logo">
             <a href="index.html">
-               <img src="{{asset('landing/assets/img/logo/logo-white.png')}}" alt="img">
+               <img src="{{asset('landing/assets/img/logo/lo  white.png')}}" alt="img">
             </a>
          </div>
          <div class="rr-main-menu-mobile d-xl-none"></div>
@@ -188,7 +188,7 @@
                      </div>
                   </div>
                </div>
-  
+
             </div>
          </div>
       </div>
@@ -208,7 +208,7 @@
                   <div class="rr-header-main-menu d-none d-xl-block mr-80 p-relative">
                      <nav class="rr-main-menu-content text-end rr-header-1-before">
                         <ul>
-                        
+
                            <li><a href="about.html">Home</a></li>
                            <li><a href="{{route('about')}}">about us</a></li>
                            <li class="has-dropdown">
@@ -219,14 +219,14 @@
                               </ul>
                            </li>
                            <li class="has-dropdown">
-                              <a href="shop.html">Login</a>
+                              <a href="{{route('login')}}">Login</a>
                               <ul class="submenu rr-submenu">
                                  <li><a href="{{route('login')}}">Sing Up</a></li>
                                  <li><a href="sing-in.html">Sing In</a></li>
                               </ul>
                            </li>
-                         
-                       
+
+
                            <li><a href="contact.html">Contact</a></li>
                         </ul>
                      </nav>
@@ -234,7 +234,7 @@
                </div>
                <div class="col-xl-2 col-lg-6 col-6">
                   <div class="rr-header-right d-flex align-items-center justify-content-end p-relative">
-  
+
                      <div class="rr-header-icon-search rr-header-search-main d-none d-xl-block">
                         <button class="search-open-btn">
                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -247,7 +247,7 @@
                            </svg>
                         </button>
                      </div>
-  
+
                      <div class="rr-header-icon-card rr-header-icon-card-main d-none d-xl-block p-relative">
                         <a href="{{route('user.cart')}}">
                            <svg width="15" height="16" viewBox="0 0 15 16" fill="none"
@@ -277,6 +277,5 @@
          </div>
       </div>
       <!-- header area end -->
-  
+
    </header>
-  

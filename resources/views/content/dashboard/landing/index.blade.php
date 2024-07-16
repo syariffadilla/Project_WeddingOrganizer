@@ -313,19 +313,19 @@
              </div>
           </div>
           <div class="row gx-30">
-            @foreach ($vendor as $item)
-                
+            @foreach ($paket as $item)
+
             <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6  col-12 wow rrfadeUp" data-wow-duration=".9s"
             data-wow-delay=".3s">
             <div class="rr-shop-item mb-30">
                <div class="rr-shop-thumb">
-                  <img src="{{asset('landing/assets/img/shop/image.jpg')}}" alt="">
+                  <img src="{{asset('paket/' . $item->foto1)}}" alt="">
                   <div class="rr-shop-cart-btn text-center">
-                     <a href="{{ route('detailPaket', ['id' => $item->vendor_id]) }}">Add To Cart</a>
+                     <a href="{{ route('detailPaket', ['id' => $item->paket_id]) }}">Add To Cart</a>
                   </div>
                </div>
                <div class="rr-shop-content text-center">
-                  <h4 class="rr-shop-title"><a href="{{ route('detailPaket', ['id' => $item->vendor_id]) }}">{{ $item->nama_vendor }}</a></h4>
+                  <h4 class="rr-shop-title"><a href="{{ route('detailPaket', ['id' => $item->paket_id]) }}">{{ $item->nama_paket }}</a></h4>
                   <span>Rp. {{number_format($item->harga, 0, ',', '.')}} </span>
                </div>
             </div>
