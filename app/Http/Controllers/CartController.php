@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -37,6 +38,55 @@ class CartController extends Controller
         });
 
         return view('content.dashboard.landing.cart', compact('cart','total'));
+    }
+
+
+    public function checkDateAvailability(Request $request)
+{
+    $bookingDate = $request->input('booking_date');
+
+    // Lakukan pengecekan di database
+    $booking = Booking::where('tanggal_booking', $bookingDate)->first();
+
+    if ($booking) {
+        return response()->json(['available' => false]);
+    }
+
+    return response()->json(['available' => true]);
+}
+
+
+public function pesananBerhasil(Request $request)
+{
+    return view('content.dashboard.landing.pesanan_berhasil');
+}
+
+    public function checkoutIndex()
+    {
+
+         // Mengambil user yang sedang login
+         $user = Auth::user();
+
+         // Jika Anda memiliki relasi antara User dan Cart, misalnya dengan menggunakan Eloquent Relationship
+         // Anda bisa mengambil cart dari user tersebut dengan cara seperti ini:
+         // $cart = $user->cart; // Ini contoh jika menggunakan relasi 'cart' di model User
+
+         // Jika tidak ada relasi, Anda bisa mencari cart secara langsung berdasarkan user_id
+         // Misalnya jika user_id disimpan di kolom user_id di tabel Cart:
+         $cart = Cart::where('id_user', $user->id)
+         ->with('paket') // Mengikutsertakan relasi 'paket'
+         ->get();
+         // dd($cart);
+         // Kemudian kirim data cart ke view
+
+
+         $total = $cart->sum(function ($carts) {
+             return $carts->paket->harga;
+         });
+
+
+        return view('content.dashboard.landing.checkout',  compact('cart','total'));
+
     }
 
     /**
@@ -85,7 +135,13 @@ class CartController extends Controller
 
     public function countCartItemsAjax()
     {
-        $totalItems = Cart::count();
+
+        $user = Auth::user();
+
+        $totalItems = Cart::where('id_user', $user->id)
+        ->count();
+
+        // $totalItems = Cart::;
 
         return response()->json(['totalItems' => $totalItems]);
     }

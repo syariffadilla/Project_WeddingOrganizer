@@ -84,6 +84,7 @@
         });
     </script>
 
+
     <!-- Sisanya dari skrip JavaScript Anda -->
     <script src="{{ asset('landing/assets/js/vendor/waypoints.js') }}"></script>
     <script src="{{ asset('landing/assets/js/bootstrap-bundle.js') }}"></script>

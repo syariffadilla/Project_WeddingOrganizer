@@ -55,56 +55,55 @@ class LandingController extends Controller
 
     public function booking(Request $request)
     {
-        // Validate the request data if needed
+        // dd($request);
+          // Validasi request jika diperlukan
+          $request->validate([
+            'paket_id' => 'required|exists:paket,paket_id',
+            'booking_date' => 'required|date',
+            'kecamatan' => 'required',
+            'kota' => 'required',
+                    'butki_tf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
 
-        $paket = Paket::find($request->id_paket);
-        $user = auth()->user();
+            'catatan' => 'nullable|string|max:200',
+        ]);
 
+        // Buat invoice
+        $invoice = 'INV-' . Auth::id() . '-' . time();
+
+
+         // Simpan file gambar
+    if ($request->hasFile('butki_tf')) {
+        $gambar = $request->file('butki_tf');
+                $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
+                $gambar->move('paket/',$nama_gambar);
+
+
+
+        // Simpan booking baru
         $booking = new Booking([
-            'user_id' => $user->id,
+            'user_id' => Auth::id(),
+            'invoice' => $invoice,
             'paket_id' => $request->paket_id,
-            'tanggal_booking' => $request->tanggal_booking,
+            'tanggal_booking' => $request->booking_date,
+            'kecamatan' => $request->kecamatan,
+            'bank' => $request->bank,
+            'kota' => $request->kota,
             'status' => 1,
             'catatan' => $request->catatan,
-            'vendor_id_1' => $request->has('selectedVendorIds') && isset($request->selectedVendorIds[0]) ? $request->selectedVendorIds[0] : null,
-            'vendor_id_2' => $request->has('selectedVendorIds') && isset($request->selectedVendorIds[1]) ? $request->selectedVendorIds[1] : null,
-            'vendor_id_3' => $request->has('selectedVendorIds') && isset($request->selectedVendorIds[2]) ? $request->selectedVendorIds[2] : null,
-            'vendor_id_4' => $request->has('selectedVendorIds') && isset($request->selectedVendorIds[3]) ? $request->selectedVendorIds[3] : null,
-            'vendor_id_5' => $request->has('selectedVendorIds') && isset($request->selectedVendorIds[4]) ? $request->selectedVendorIds[4] : null,
+            'bukti_tf'  => $nama_gambar,
         ]);
 
         if ($booking->save()) {
-            // Retrieve the ID after saving
-            $bookingId = $booking->booking_id;
-
-
-            // Load associated data for display
-            $data = Booking::with(['user', 'paket', 'vendor1', 'vendor2', 'vendor3', 'vendor4', 'vendor5'])
-            ->find($bookingId);
-
-            // @dd($data);
-            // Redirect to the checkout view or do any further processing
-            return view('content.dashboard.landing.checkout', compact('request', 'user', 'paket', 'booking', 'data'));
+            return redirect()->route('pesanan.berhasil')->with('success', 'Booking created successfully');
         } else {
-            return redirect()->route('utama')->with('error', 'Failed to create booking');
+            return redirect()->back()->withInput()->with('error', 'Failed to create booking');
         }
     }
 
 
 
-    public function Checkout(Request $request, $id){
 
-        $booking = Booking::find($id);
-
-        $gambar = $request->file('gambar');
-                $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
-                $gambar->move('paket/',$nama_gambar);
-                $booking->bukti_tf = $nama_gambar;
-
-
-        $booking->save();
-        return redirect()->route('utama')->with('success', 'Data Berhasil Diperbarui');
-    }
+}
     public function about(){
         return view('content.dashboard.landing.about');
     }

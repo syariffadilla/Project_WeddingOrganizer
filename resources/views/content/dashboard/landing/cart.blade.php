@@ -128,7 +128,7 @@
                                     </div>
                                     <div class="rr-shop-bottom-btn d-flex">
                                         <a class="rr-shop-btn-box" href="shop.html">Keep Shopping</a>
-                                        <a class="rr-shop-btn-box-2" href="checkout.html">Checkout</a>
+                                        <a class="rr-shop-btn-box-2" href="{{route('checkout.user')}}">Checkout</a>
                                     </div>
                                 </div>
                             </div>

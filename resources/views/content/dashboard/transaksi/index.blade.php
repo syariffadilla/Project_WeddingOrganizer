@@ -63,23 +63,17 @@
                                             <td>{{ $item->paket->nama_paket }}</td>
                                             <td>Rp {{ number_format($item->paket->harga, 0, ',', '.') }}</td>
                                             <td>
-                                                @if ($item->status == 0)
+                                                @if ($item->status == 1)
                                                     Belum Dikonfirmasi
-                                                @elseif ($item->status == 1)
-                                                    Sudah Dikonfirmasi
                                                 @elseif ($item->status == 2)
-                                                    Sedang Diproses
-                                                @elseif ($item->status == 3)
-                                                    Sedang Dikirim
-                                                @elseif ($item->status == 4)
-                                                    Sudah Diterima
-                                                @elseif ($item->status == 5)
+                                                    Sudah Dikonfirmasi
+                                               @elseif ($item->status == 3)
                                                     Ditolak
                                                 @endif
 
 
                                             </td>
-                                            <td>{{ $item->keterangan ?: '-' }} </td>
+                                            <td>{{ $item->catatan ?: '-' }} </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -95,21 +89,21 @@
                                                             data-bs-target="#HapusTransaksi{{ $item->id }}"><i
                                                                 class="bx bx-trash me-1"></i> Hapus</a>
                                                                 <a class="dropdown-item"
-                                                                href="https://api.whatsapp.com/send?phone={{ $item->user ? $item->user->no_hp : '' }}&text=
+                                                                href="https://api.whatsapp.com/send?phone={{  $item->user->no_tlfn  }}&text=
                                                                 Selamat Saya dari admin Booked Weeding Ingin memberi tahu bahwa pesanan anda dengan data:%0A
-                                                                No Transaksi: {{ $item->no_transaksi }}%0A
-                                                                Alamat: {{ $item->alamat }}%0A
-                                                                Nama Pembeli: {{ $item->user ? $item->user->name : 'User Not Found' }}%0A
+                                                                No Transaksi: {{ $item->invoice }}%0A
+                                                                Alamat: {{ $item->user->alamat }}%0A
+                                                                Nama Pembeli: {{ $item->user->name }}%0A
                                                                 Jumlah Bayar: Rp {{ number_format($item->total_transaksi, 0, ',', '.') }}%0A
-                                                                Nama Product: {{ $item->product ? $item->product->nama_prod : 'Product Not Found' }}%0A
-                                                                Status: @if ($item->status == 0)
+                                                                Nama Product: {{ $item->paket->nama_paket ? $item->paket->nama_paket : 'Product Not Found' }}%0A
+                                                                Status: @if ($item->status == 1)
                                                                         Belum Konfirmasi
-                                                                    @elseif ($item->status == 1)
-                                                                        Sudah Dikonfirmasi
                                                                     @elseif ($item->status == 2)
+                                                                        Sudah Dikonfirmasi
+                                                                    @elseif ($item->status == 3)
                                                                         Ditolak
                                                                     @endif%0A
-                                                                Keterangan: {{ $item->keterangan ?: '-' }}%0A%0A
+                                                                Keterangan: {{ $item->catatan ?: '-' }}%0A%0A
                                                                 Silahkan cek pesanan anda.%0A
                                                                 Salam hangat"
                                                                 target="_blank">

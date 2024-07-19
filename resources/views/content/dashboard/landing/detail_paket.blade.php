@@ -142,7 +142,7 @@
                                     <h6 class="rr-shop-details-action__title">Booking</h6>
                                     <div class="rr-shop-details-price-cart d-flex align-items-center mb-30 ">
                                         <div class="rr-shop-details-cart mr-10">
-                                            <div class="rr-shop-details__quantity p-relative">
+                                            <div class="rr-shop-details__quantity p-relative" id="mengiriPpost">
                                                 <form action="{{ route('cart.store') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="id_product" value="{{ $vendor->vendor_id }}">

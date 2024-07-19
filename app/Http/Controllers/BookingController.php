@@ -19,6 +19,10 @@ class BookingController extends Controller
         $data = Booking::with(['user', 'paket', 'vendor1', 'vendor2', 'vendor3', 'vendor4', 'vendor5'])
         ->get();
 
+        // $user = Auth::user();
+
+        // dd($data);
+
         return view('content.dashboard.transaksi.index', compact('booking', 'data'));
     }
 
@@ -36,13 +40,32 @@ class BookingController extends Controller
     }
 
 
-    public function konfirmasi(Request $request,$id){
-        $transaksi = Booking::findOrFail($id);
-        $transaksi->status = $request->konfirmasi;
-        // $transaksi->keterangan = $request->keterangan;
-        $transaksi->save();
-        return redirect()->route('admin.transaksi')->with('success', 'Data Pesanan berhasil disimpan.');
+    public function konfirmasi(Request $request, $id)
+    {
+        // Validasi request jika diperlukan
+        $request->validate([
+            'konfirmasi' => 'required|integer', // Ubah sesuai dengan aturan validasi yang diperlukan
+            // Anda bisa menambahkan validasi lainnya sesuai kebutuhan
+        ]);
+
+        try {
+            // Ambil data transaksi berdasarkan ID
+            $transaksi = Booking::findOrFail($id);
+
+            // Update status transaksi
+            $transaksi->status = $request->konfirmasi;
+
+            // Simpan perubahan
+            $transaksi->save();
+
+            // Redirect dengan pesan sukses
+            return redirect()->route('admin.transaksi')->with('success', 'Data Pesanan berhasil disimpan.');
+        } catch (\Exception $e) {
+            // Jika terjadi error, redirect kembali dengan pesan error
+            return redirect()->back()->withInput()->with('error', 'Gagal menyimpan data Pesanan. ' . $e->getMessage());
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.

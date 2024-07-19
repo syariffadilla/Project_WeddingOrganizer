@@ -45,35 +45,24 @@
                                             <input type="text" id="nameExLarge" name="harga"
                                                 class="form-control" value="{{ $item->tanggal_booking }}"  />
                                         </div>
-                                        <div class="col mb-3">
-                                            <label for="nameExLarge" class="form-label">Vendor</label>
-                                            <input type="text" id="nameExLarge" name="harga"
-                                                class="form-control" value="{{ $item->vendor1->nama_vendor }}"  />
-                                        </div>
 
                                         <div class="mb-3">
                                             <label for="defaultSelect" class="form-label">Konfirmasi Pesanan</label>
                                             <select id="defaultSelect" class="form-select" name="konfirmasi">
-                                                @if ($item->status == 0)
-                                                <option value="0">Belum Dikonfirmasi</option>
-                                                @elseif ($item->status == 1)
-                                                <option value="1">Sudah Dikonfirmasi</option>
+                                                @if ($item->status == 1)
+                                                <option value="1">Belum Dikonfirmasi</option>
                                                 @elseif ($item->status == 2)
-                                                <option value="2">Sedang Diproses</option>
+                                                <option value="2">Sudah Dikonfirmasi</option>
                                                 @elseif ($item->status == 3)
-                                                <option value="3">Sedang Dikirim</option>
-                                                @elseif ($item->status == 4)
-                                                <option value="4">Sudah Diterima</option>
-                                                @elseif ($item->status == 5)
-                                                <option value="5">Ditolak</option>
+                                                <option value="3">Ditolak</option>
+
                                                 @endif
-                                                <option>Pilih Keterangan</option>
-                                                <option value="0">Belum DIkonfirmasi</option>
-                                                <option value="1">Sudah Dikonfirmasi</option>
-                                                <option value="2">Sedang Diproses</option>
-                                                <option value="3">Sedang Dikirim</option>
-                                                <option value="4">Sudah Diterima</option>
-                                                <option value="5">Ditolak</option>
+
+
+                                                <option value="1">Belum Konfirmasi</option>
+                                                <option value="2">Sudah Dikonfirmasi</option>
+                                                <option value="3">Ditolak</option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -107,7 +96,7 @@
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                     Batal
                 </button>
-                <button type="submit" class="btn btn-primary">kONFIRMASI</button>
+                <button type="submit" class="btn btn-primary">KONFIRMASI</button>
             </div>
             </form>
         </div>

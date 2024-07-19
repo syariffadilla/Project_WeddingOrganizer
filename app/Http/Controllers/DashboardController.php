@@ -32,8 +32,22 @@ class DashboardController extends Controller
         $data['paket'] = Paket::count();
         // $data['paket'] = Paket::count();
         $data['booking'] = Booking::count();
-        $data['bookingData'] = Booking::all();
-        
+        $data['bookingData'] = Booking::select('booking.*', 'paket.nama_paket')
+        ->join('paket', 'booking.paket_id', '=', 'paket.paket_id')
+        ->get();
+
+
+        $data['bookingPending'] = Booking::where('status', '1')->count();
+        $data['bookingKonfirmasi'] = Booking::where('status', '2')->count();
+        $data['bookingTolak'] = Booking::where('status', '3')->count();
+
+
+        $data['totalRupiah'] = Booking::where('status', '3')->count();
+
+
+
+
+
 
         // @dd($data['bookingsStatus1']);
 

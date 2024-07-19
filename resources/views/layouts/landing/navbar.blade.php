@@ -209,22 +209,31 @@
                      <nav class="rr-main-menu-content text-end rr-header-1-before">
                         <ul>
 
-                           <li><a href="about.html">Home</a></li>
+                           <li><a href="{{route('utama')}}">Home</a></li>
                            <li><a href="{{route('about')}}">about us</a></li>
                            <li class="has-dropdown">
-                              <a href="services.html">Product</a>
+                              <a href="#">Product</a>
                               <ul class="submenu rr-submenu">
                                  <li><a href="{{route('paketLanding')}}">Paket</a></li>
-                                 <li><a href="{{route('vendorLanding')}}">Vendor</a></li>
+                                 {{-- <li><a href="{{route('vendorLanding')}}">Vendor</a></li> --}}
                               </ul>
                            </li>
+                           @guest
                            <li class="has-dropdown">
-                              <a href="{{route('login')}}">Login</a>
-                              <ul class="submenu rr-submenu">
-                                 <li><a href="{{route('login')}}">Sing Up</a></li>
-                                 <li><a href="sing-in.html">Sing In</a></li>
-                              </ul>
-                           </li>
+
+                                <a href="{{ route('login') }}">Login</a>
+                                <ul class="submenu rr-submenu">
+                                    <li><a href="{{ route('register') }}">Sign Up</a></li>
+                                    <li><a href="{{ route('login') }}">Sign In</a></li>
+                                </ul>
+                            @else
+                        </li>
+                        <li><a href="">{{ Auth::user()->name }}</a></li>
+
+                                <!-- Tambahkan dropdown atau menu tambahan jika diperlukan -->
+                            @endguest
+
+
 
 
                            <li><a href="contact.html">Contact</a></li>

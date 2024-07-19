@@ -41,6 +41,12 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->name('user.cart');
     Route::post('/vendor/add', [VendorController::class, 'addVendor'])->name('vendor.add');
     Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
+    Route::post('/check-date-availability', [App\Http\Controllers\CartController::class, 'checkDateAvailability'])->name('check.date.availability');
+
+
+
+    Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkoutIndex'])->name('checkout.user');
+    Route::get('/pesanan-berhasil', [App\Http\Controllers\CartController::class, 'pesananBerhasil'])->name('pesanan.berhasil');
 
 
 
