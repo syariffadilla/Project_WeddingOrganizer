@@ -21,10 +21,12 @@ class LandingController extends Controller
     }
 
     public function paket(){
-        $data['paket'] = Paket::all();
+        $data['paket'] = Paket::paginate(12);
+        $data['paketCount'] = Paket::count();
         $data['vendor'] = Vendor::all();
-        return view('content.dashboard.landing.index', $data);
+        return view('content.dashboard.landing.paket', $data);
     }
+    
 
 
     public function detailPaket($id){
@@ -55,30 +57,28 @@ class LandingController extends Controller
 
     public function booking(Request $request)
     {
-        // dd($request);
-          // Validasi request jika diperlukan
-          $request->validate([
+        // Validasi request jika diperlukan
+        $request->validate([
             'paket_id' => 'required|exists:paket,paket_id',
             'booking_date' => 'required|date',
             'kecamatan' => 'required',
             'kota' => 'required',
-                    'butki_tf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
-
+            'bukti_tf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
             'catatan' => 'nullable|string|max:200',
         ]);
-
+    
         // Buat invoice
         $invoice = 'INV-' . Auth::id() . '-' . time();
-
-
-         // Simpan file gambar
-    if ($request->hasFile('butki_tf')) {
-        $gambar = $request->file('butki_tf');
-                $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
-                $gambar->move('paket/',$nama_gambar);
-
-
-
+    
+        // Simpan file gambar
+        if ($request->hasFile('bukti_tf')) {
+            $gambar = $request->file('bukti_tf');
+            $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
+            $gambar->move('paket/', $nama_gambar);
+        } else {
+            $nama_gambar = null;
+        }
+    
         // Simpan booking baru
         $booking = new Booking([
             'user_id' => Auth::id(),
@@ -90,20 +90,26 @@ class LandingController extends Controller
             'kota' => $request->kota,
             'status' => 1,
             'catatan' => $request->catatan,
-            'bukti_tf'  => $nama_gambar,
+            'bukti_tf' => $nama_gambar,
         ]);
-
+    
         if ($booking->save()) {
+            // Hapus item dari cart berdasarkan user_id dan paket_id
+            Cart::where('id_user', Auth::id())
+                ->where('id_paket', $request->paket_id)
+                ->delete();
+    
             return redirect()->route('pesanan.berhasil')->with('success', 'Booking created successfully');
         } else {
             return redirect()->back()->withInput()->with('error', 'Failed to create booking');
         }
     }
+  
 
 
 
 
-}
+
     public function about(){
         return view('content.dashboard.landing.about');
     }

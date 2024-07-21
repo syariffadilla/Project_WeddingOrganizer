@@ -3,22 +3,22 @@
 @section('main')
     <main>
 
-        <!-- breadcrumb area start -->
-        <div class="breadcrumb__area breadcrumb__height fix p-relative" data-bg-color="#F6F8FF">
-            <div class="breadcrumb__shap">
-                <div class="shap">
-                    <img src="assets/img/error/shap.png" alt="">
-                </div>
-                <div class="shap-2">
-                    <img src="assets/img/error/shape-2.png" alt="">
-                </div>
-                <div class="shap-3">
-                    <img src="assets/img/error/shape-3.png" alt="">
-                </div>
-                <div class="shap-4">
-                    <img src="assets/img/error/shape-4.png" alt="">
-                </div>
+       <!-- breadcrumb area start -->
+    <div class="breadcrumb__area breadcrumb__height fix p-relative" data-bg-color="#F6F8FF">
+        <div class="breadcrumb__shap">
+            <div class="shap">
+                <img src="{{Asset('landing/assets/img/error/shap.png')}}" alt="">
             </div>
+            <div class="shap-2">
+                <img src="{{Asset('landing/assets/img/error/shape-2.png')}}" alt="">
+            </div>
+            <div class="shap-3">
+                <img src="{{Asset('landing/assets/img/error/shape-3.png')}}" alt="">
+            </div>
+            <div class="shap-4">
+                <img src="{{Asset('landing/assets/img/error/shape-4.png')}}" alt="">
+            </div>
+        </div>
             <div class="container">
                 <div class="row gx-30">
                     <div class="col-xl-12 col-md-12 text-center">

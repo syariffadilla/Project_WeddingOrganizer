@@ -122,7 +122,7 @@
                             </div>
                             <div class="rr-register-button">
                                 <div class="rr-register-sing-buttom mb-25">
-                                    <button type="submit">Sign In</button>
+                                    <button type="submit">Sign Up</button>
                                 </div>
                             </div>
                         </div>

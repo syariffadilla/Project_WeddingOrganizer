@@ -211,13 +211,7 @@
 
                            <li><a href="{{route('utama')}}">Home</a></li>
                            <li><a href="{{route('about')}}">about us</a></li>
-                           <li class="has-dropdown">
-                              <a href="#">Product</a>
-                              <ul class="submenu rr-submenu">
-                                 <li><a href="{{route('paketLanding')}}">Paket</a></li>
-                                 {{-- <li><a href="{{route('vendorLanding')}}">Vendor</a></li> --}}
-                              </ul>
-                           </li>
+                           <li><a href="{{route('paketLanding')}}">Paket</a></li>
                            @guest
                            <li class="has-dropdown">
 
@@ -229,7 +223,15 @@
                             @else
                         </li>
                         <li><a href="">{{ Auth::user()->name }}</a></li>
-
+                        <li>
+                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                               @csrf
+                           </form>
+                           <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                               Logout
+                           </a>
+                       </li>
+                       
                                 <!-- Tambahkan dropdown atau menu tambahan jika diperlukan -->
                             @endguest
 
@@ -264,7 +266,7 @@
                                 <path d="M1 3.79999H14" stroke="#051145" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M10.3889 6.60001C10.3889 7.34261 10.0845 8.0548 9.54273 8.57991C9.00095 9.10501 8.26615 9.40001 7.49997 9.40001C6.73379 9.40001 5.99899 9.10501 5.45722 8.57991C4.91545 8.0548 4.61108 7.34261 4.61108 6.60001" stroke="#051145" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <span id="cartItemCount">Loading...</span>
+                            <span id="cartItemCount">0</span>
                         </a>
                      </div>
                      <div class="rr-header-contat d-none d-md-block ml-35">
