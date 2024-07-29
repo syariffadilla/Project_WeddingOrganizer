@@ -144,7 +144,7 @@
         <li class="menu-header small text-uppercase"><span class="menu-header-text">PENGGUNA</span></li>
         <!-- User interface -->
         <li class="menu-item ">
-            <a href="" class="menu-link">
+            <a href="{{route('admin.pengguna.index')}}" class="menu-link">
                 {{-- <i class="menu-icon tf-icons bx bx-product"></i> --}}
                 <i class="menu-icon tf-icons bi bi-people-fill"></i>
                 <div data-i18n="Boxicons">Pembeli</div>

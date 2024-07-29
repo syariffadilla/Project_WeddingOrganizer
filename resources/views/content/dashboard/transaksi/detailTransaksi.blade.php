@@ -21,7 +21,7 @@
                                     <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                                         data-bs-target="#navs-pills-top-home-2" aria-controls="navs-pills-top-home-2"
                                         aria-selected="true">
-                                        Data Barang
+                                        Data Transaksi
                                     </button>
                                 </li>
 
@@ -38,8 +38,25 @@
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Harga</label>
                                             <input type="text" id="nameExLarge" name="harga"
-                                                class="form-control" value="{{ number_format($item->paket->harga, 0,'.',',') }}"  />
+                                                class="form-control" value="{{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}"  />
                                         </div>
+                                        <div class="col mb-3">
+                                            <label for="nameExLarge" class="form-label">Tanggal</label>
+                                            <input type="text" id="nameExLarge" name="harga"
+                                                class="form-control" value="{{ $item->tanggal_booking }}"  />
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col mb-3">
+                                            <label for="nameExLarge" class="form-label">BANK</label>
+                                            <input type="text" id="nameExLarge" name="nama_paket" class="form-control" value="{{ $item->bank }}" readonly />
+                                        </div>
+                                        <div class="col mb-3">
+                                            <label for="dpExLarge" class="form-label">DP 30%</label>
+                                            <input type="text" id="dpExLarge" name="harga" class="form-control" value="{{ number_format($item->harga * 0.3, 0, ',', '.') }}" readonly />
+                                        </div>
+                                        
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Tanggal</label>
                                             <input type="text" id="nameExLarge" name="harga"

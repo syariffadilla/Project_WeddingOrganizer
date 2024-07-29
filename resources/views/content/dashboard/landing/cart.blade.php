@@ -59,37 +59,34 @@
                                         <tr>
                                             <td class="product-remove">
                                                 <a href="#" class="delete-cart-item" data-id="{{ $item->id }}">
-                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M9 1L1 9" stroke="#001D08" stroke-width="1.5"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                        <path d="M1 1L9 9" stroke="#001D08" stroke-width="1.5"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M9 1L1 9" stroke="#001D08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path d="M1 1L9 9" stroke="#001D08" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </a>
                                             </td>
-
+                                
                                             <td class="product-thumbnail d-flex align-items-center">
                                                 <a href="shop-details.html">
-                                                    <img src="{{ asset('paket/' . $item->paket->foto1) }}" width="100px"
-                                                        height="100px" alt="img">
+                                                    <img src="{{ asset($item->paket->foto1 ?? 'path/to/default-image.jpg') }}" width="100px" height="100px" alt="img">
                                                 </a>
                                                 <div class="product-thumbnail__wrapper">
-                                                    <div class="product-name">{{ $item->paket->nama_paket }}</div>
+                                                    <div class="product-name">{{ $item->paket->nama_paket ?? 'Nama Paket Tidak Tersedia' }}</div>
                                                     <span class="product-size">Wajib DP</span>
                                                 </div>
                                             </td>
-
-                                            <td class="product-price"><span class="amount amount-2">Rp.
-                                                    {{ number_format($item->paket->harga, 0, ',', '.') }}</span></td>
-
-
-                                            <td class="product-subtotal"><span class="amount">Rp.
-                                                    {{ number_format($item->paket->harga, 0, ',', '.') }}</span></td>
+                                
+                                            <td class="product-price">
+                                                <span class="amount amount-2">Rp. {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}</span>
+                                            </td>
+                                
+                                            <td class="product-subtotal">
+                                                <span class="amount">Rp. {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}</span>
+                                            </td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
+                                
                             </table>
                         </div>
                         <div class="row">
@@ -127,7 +124,7 @@
                                         <h5>Rp. {{ number_format($total, 0, ',', '.') }}</h5>
                                     </div>
                                     <div class="rr-shop-bottom-btn d-flex">
-                                        <a class="rr-shop-btn-box" href="shop.html">Keep Shopping</a>
+                                        <a class="rr-shop-btn-box" href="{{route('paketLanding')}}">Keep Shopping</a>
                                         <a class="rr-shop-btn-box-2" href="{{route('checkout.user')}}">Checkout</a>
                                     </div>
                                 </div>

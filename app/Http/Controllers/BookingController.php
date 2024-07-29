@@ -36,6 +36,9 @@ class BookingController extends Controller
         ->get();
 
 
+        
+
+
         return view('content.dashboard.transaksi.index1', compact('booking', 'data'));
     }
 

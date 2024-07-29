@@ -52,7 +52,7 @@
                             <h3 class="rr-register-title">Welcome back!</h3>
                             <p>Enter your Credentials to access your account</p>
                         </div>
-                        <form method="POST" action="{{ route('login') }}">
+                        <form id="login-form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="rr-register-signup-form-wrapper">
                                 <div class="rr-register-item-thumb">
@@ -78,52 +78,18 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <div class="rr-register-signup-action">
-                                        <div class="rr-register-course-sidebar-list">
-                                            <input class="rr-register-signup-checkbo" type="checkbox" id="sing-in">
-                                            <label class="rr-register-sign-check" for="sing-in"><span>Remember for 30
-                                                    days</span></label>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="rr-register-button">
                                     <div class="rr-register-sing-buttom mb-25">
-                                        <button type="submit" class="sing-btn">Sign In</button>
+                                        <a href="javascript:void(0)" class="sing-btn" id="submit-link">Sign In</a>
                                     </div>
                                 </div>
                             </div>
                         </form>
                     </div>
                     
-                        <div class="rr-register-button-wrap d-flex justify-content-center mb-25">
-                            <div class=" rr-register-sign mr-30">
-                                <a href="#">
-
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M19.8055 8.0415H19V8H10V12H15.6515C14.827 14.3285 12.6115 16 10 16C6.6865 16 4 13.3135 4 10C4 6.6865 6.6865 4 10 4C11.5295 4 12.921 4.577 13.9805 5.5195L16.809 2.691C15.023 1.0265 12.634 0 10 0C4.4775 0 0 4.4775 0 10C0 15.5225 4.4775 20 10 20C15.5225 20 20 15.5225 20 10C20 9.3295 19.931 8.675 19.8055 8.0415Z"
-                                            fill="#FFC107" />
-                                        <path
-                                            d="M1.15234 5.3455L4.43784 7.755C5.32684 5.554 7.47984 4 9.99934 4C11.5288 4 12.9203 4.577 13.9798 5.5195L16.8083 2.691C15.0223 1.0265 12.6333 0 9.99934 0C6.15834 0 2.82734 2.1685 1.15234 5.3455Z"
-                                            fill="#FF3D00" />
-                                        <path
-                                            d="M10.0002 19.9999C12.5832 19.9999 14.9302 19.0114 16.7047 17.4039L13.6097 14.7849C12.6057 15.5454 11.3577 15.9999 10.0002 15.9999C7.39916 15.9999 5.19066 14.3414 4.35866 12.0269L1.09766 14.5394C2.75266 17.7779 6.11366 19.9999 10.0002 19.9999Z"
-                                            fill="#4CAF50" />
-                                        <path
-                                            d="M19.8055 8.0415H19V8H10V12H15.6515C15.2555 13.1185 14.536 14.083 13.608 14.7855L13.6095 14.7845L16.7045 17.4035C16.4855 17.6025 20 15 20 10C20 9.3295 19.931 8.675 19.8055 8.0415Z"
-                                            fill="#1976D2" />
-                                    </svg>
-                                    Sign in with Google
-                                </a>
-                            </div>
-                            <div class="rr-register-sign">
-                                <a href="#" class="">
-                                    <img src="{{asset('landing/assets/img/sign-in/apple.png')}}" alt="img not found">
-                                    Sign in with Apple
-                                </a>
-                            </div>
-                        </div>
+                   
                         <div class="rr-register-sign-social text-center ">
                             <h5>Don’t have an account? <a href="{{route('register')}}"> Sign Up</a></h5>
                         </div>
@@ -135,5 +101,21 @@
     </div>
     <!-- rr-register area end  -->
 </main>
+
+@endsection
+
+
+@section('js-tambahan')
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('submit-link').addEventListener('click', function() {
+            document.getElementById('login-form').submit();
+        });
+    });
+</script>
+
+
 
 @endsection

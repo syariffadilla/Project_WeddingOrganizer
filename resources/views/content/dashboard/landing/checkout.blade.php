@@ -133,21 +133,29 @@
                                     </li>
 
                                     @foreach ($cart as $item)
+                                    @if ($item->paket)
                                         <!-- item list -->
                                         <li class="rr-order-info-list-desc">
                                             <p> {{ $item->paket->nama_paket }} <span> x 1</span></p>
                                             <span>Rp. {{ number_format($item->paket->harga, 0, ',', '.') }}</span>
                                         </li>
-                                        <input type="hidden" name="paket_id" value="{{ $item->paket->paket_id}}">
-                                    @endforeach
-
-
-                                    <!-- subtotal -->
-                                    <li class="rr-order-info-list-subtotal">
-                                        <span>Subtotal</span>
-                                        <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
-                                    </li>
-
+                                        <input type="hidden" name="paket_id" value="{{ $item->paket->paket_id }}">
+                                    @else
+                                        <!-- item list -->
+                                        <li class="rr-order-info-list-desc">
+                                            <p> Nama Paket Tidak Tersedia <span> x 1</span></p>
+                                            <span>Rp. 0</span>
+                                        </li>
+                                        <input type="hidden" name="paket_id" value="">
+                                    @endif
+                                @endforeach
+                                
+                                <!-- subtotal -->
+                                <li class="rr-order-info-list-subtotal">
+                                    <span>Subtotal</span>
+                                    <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
+                                </li>
+                                
                                     <!-- shipping -->
                                     <li class="rr-order-info-list-shipping">
                                         <span>Biaya Layanan</span>
@@ -259,7 +267,7 @@
                             bookingDateInput.disabled = false; // Aktifkan kembali input tanggal jika tersedia
                         } else {
                             dateAvailabilityMessage.textContent = "Tanggal sudah dipesan. Silakan pilih tanggal lain.";
-                            bookingDateInput.disabled = true; // Nonaktifkan input tanggal jika tidak tersedia
+                            bookingDateInput.disabled = false; // Nonaktifkan input tanggal jika tidak tersedia
                         }
                     },
                     error: function(xhr, status, error) {

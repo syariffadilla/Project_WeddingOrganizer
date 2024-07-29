@@ -15,6 +15,8 @@
                             <label for="nameBasic" class="form-label">Nama Paket</label>
                             <input type="text" id="nameBasic" class="form-control" name="Kategori"
                                 value="{{ $item->nama_paket }}" readonly />
+
+                                <input type="hidden" value="{{ $item->paket_id }}" name="Paket">
                         </div>
                     </div>
 

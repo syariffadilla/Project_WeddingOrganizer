@@ -74,7 +74,7 @@ class LandingController extends Controller
         if ($request->hasFile('bukti_tf')) {
             $gambar = $request->file('bukti_tf');
             $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
-            $gambar->move('paket/', $nama_gambar);
+            $gambar->move(public_path('paket/'), $nama_gambar);
         } else {
             $nama_gambar = null;
         }
@@ -104,7 +104,7 @@ class LandingController extends Controller
             return redirect()->back()->withInput()->with('error', 'Failed to create booking');
         }
     }
-  
+    
 
 
 

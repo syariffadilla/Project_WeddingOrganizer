@@ -109,35 +109,22 @@
                   <div class="rr-header-top-info text-end">
                      <ul class="d-flex align-items-center">
                         <li>
-                           <b><span><i class="fa-regular fa-clock"></i></span> Monday - Friday, 8:00am- 5:00 pm</b>
+                           <b><span><i class="fa-regular fa-clock"></i></span> Senin - Minggu, 8:00am- 16:00 pm</b>
                         </li>
                         <li class="ml-30">
                            <a href="tel:2455921125"><span><img src="{{asset('landing/assets/img/header/call.svg')}}" alt=""></span>
-                              (+245) 592 1125</a>
+                              085224248455</a>
                         </li>
                         <li class="ml-30">
                            <a href="htrrs://www.google.com.bd/maps/@23.7806365,90.4193257,12z"><span><i
-                                    class="fa-regular fa-location-dot"></i></span> 121 Sunrise Street, Melborne</a>
+                                    class="fa-regular fa-location-dot"></i></span> Perumahan Kaliwulu, Plered</a>
                         </li>
                      </ul>
                   </div>
                </div>
                <div class="col-xxl-5 col-xl-5 col-lg-">
                   <div class="rr-header-2-top-info d-flex align-items-center justify-content-end text-end">
-                     <div class="rr-header-2-lang rr-header-lang-main d-none d-md-block mr-10">
-                        <select style="display: none;">
-                           <option>English</option>
-                           <option>Bangla</option>
-                           <option>French</option>
-                        </select>
-                        <div class="nice-select" tabindex="0"><span class="current">English</span>
-                           <ul class="list z-index-2">
-                              <li data-value="English" class="option selected focus">English</li>
-                              <li data-value="Bangla" class="option">Bangla</li>
-                              <li data-value="French" class="option">French</li>
-                           </ul>
-                        </div>
-                     </div>
+                    
                      <div class="rr-header-main-social d-flex align-items-center">
                         <div class="rr-header-social ml-20">
                            <a href="#"><svg width="11" height="18" viewBox="0 0 11 18" fill="none"
@@ -148,28 +135,8 @@
                                     stroke-linejoin="round" />
                               </svg>
                            </a>
-                           <a href="#"><svg width="20" height="18" viewBox="0 0 20 18" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M19 1.00897C18.2165 1.61128 17.349 2.07195 16.4309 2.37324C15.9382 1.75576 15.2833 1.3181 14.5548 1.11947C13.8264 0.920833 13.0596 0.970799 12.3581 1.26261C11.6565 1.55442 11.0542 2.07399 10.6324 2.75105C10.2107 3.42812 9.98993 4.23001 10 5.04827V5.93995C8.56215 5.98058 7.13741 5.63305 5.85264 4.92829C4.56788 4.22354 3.46299 3.18345 2.63636 1.90065C2.63636 1.90065 -0.636364 9.92575 6.72727 13.4925C5.04225 14.739 3.03495 15.364 1 15.2758C8.36364 19.7342 17.3636 15.2758 17.3636 5.02152C17.3629 4.77315 17.341 4.52539 17.2982 4.28143C18.1332 3.38395 18.7225 2.25082 19 1.00897Z"
-                                    stroke="#051145" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                              </svg>
-                           </a>
-                           <a href="#"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                 <path
-                                    d="M12.2 6.05261C13.4731 6.05261 14.694 6.58494 15.5941 7.53249C16.4943 8.48005 17 9.7652 17 11.1052V17H13.8V11.1052C13.8 10.6586 13.6315 10.2302 13.3314 9.91433C13.0313 9.59848 12.6244 9.42103 12.2 9.42103C11.7757 9.42103 11.3687 9.59848 11.0687 9.91433C10.7686 10.2302 10.6 10.6586 10.6 11.1052V17H7.40002V11.1052C7.40002 9.7652 7.90574 8.48005 8.80591 7.53249C9.70609 6.58494 10.927 6.05261 12.2 6.05261Z"
-                                    stroke="#051145" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                                 <path d="M4.2 6.89471H1V17H4.2V6.89471Z" stroke="#051145" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                                 <path
-                                    d="M2.6 4.36842C3.48366 4.36842 4.2 3.61437 4.2 2.68421C4.2 1.75405 3.48366 1 2.6 1C1.71634 1 1 1.75405 1 2.68421C1 3.61437 1.71634 4.36842 2.6 4.36842Z"
-                                    stroke="#051145" stroke-width="1.5" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                              </svg>
-                           </a>
+                         
+                          
                            <a href="#"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                  <path
@@ -212,6 +179,8 @@
                            <li><a href="{{route('utama')}}">Home</a></li>
                            <li><a href="{{route('about')}}">about us</a></li>
                            <li><a href="{{route('paketLanding')}}">Paket</a></li>
+                        
+                           <li><a href="contact.html">Contact</a></li>
                            @guest
                            <li class="has-dropdown">
 
@@ -235,10 +204,6 @@
                                 <!-- Tambahkan dropdown atau menu tambahan jika diperlukan -->
                             @endguest
 
-
-
-
-                           <li><a href="contact.html">Contact</a></li>
                         </ul>
                      </nav>
                   </div>
@@ -270,9 +235,10 @@
                         </a>
                      </div>
                      <div class="rr-header-contat d-none d-md-block ml-35">
-                        <a class="rr-btn" href="contact.html"><span>Book Now</span> <i
+                        <a class="rr-btn" href="{{'paketLanding'}}"><span>Book Now</span> <i
                               class="fa-sharp fa-solid fa-arrow-right"></i></a>
                      </div>
+                     
                      <div class="rr-header-bar d-xl-none">
                         <button class="rr-menu-bar"><i class="fa-solid fa-bars"></i></button>
                      </div>

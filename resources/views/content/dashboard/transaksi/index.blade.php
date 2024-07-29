@@ -59,9 +59,11 @@
                                     @foreach ($data as $item)
                                         <tr>
                                             <td class="col-1 text-center">{{ $no++ }}</td>
-                                            <td>{{ $item->user->name }}</td>
-                                            <td>{{ $item->paket->nama_paket }}</td>
-                                            <td>Rp {{ number_format($item->paket->harga, 0, ',', '.') }}</td>
+                                            <td>{{ $item->user->name ?? 'Nama tidak tersedia' }}</td>
+                                            <td>{{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}</td>
+                                            <td>{{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}</td>
+                                            <td>Rp {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}</td>
+                                            
                                             <td>
                                                 @if ($item->status == 1)
                                                     Belum Dikonfirmasi
@@ -85,31 +87,28 @@
                                                     data-bs-target="#editModalKat{{ $item->booking_id }}"><i
                                                         class="bx bx-edit-alt me-1"></i> Edit</a>
                                                             <i class="bx bx-edit-alt me-1"></i> Konfirmasi</a>
-                                                        <a class="dropdown-item" type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#HapusTransaksi{{ $item->id }}"><i
-                                                                class="bx bx-trash me-1"></i> Hapus</a>
-                                                                <a class="dropdown-item"
-                                                                href="https://api.whatsapp.com/send?phone={{  $item->user->no_tlfn  }}&text=
-                                                                Selamat Saya dari admin Booked Weeding Ingin memberi tahu bahwa pesanan anda dengan data:%0A
-                                                                No Transaksi: {{ $item->invoice }}%0A
-                                                                Alamat: {{ $item->user->alamat }}%0A
-                                                                Nama Pembeli: {{ $item->user->name }}%0A
-                                                                Jumlah Bayar: Rp {{ number_format($item->total_transaksi, 0, ',', '.') }}%0A
-                                                                Nama Product: {{ $item->paket->nama_paket ? $item->paket->nama_paket : 'Product Not Found' }}%0A
-                                                                Status: @if ($item->status == 1)
-                                                                        Belum Konfirmasi
-                                                                    @elseif ($item->status == 2)
-                                                                        Sudah Dikonfirmasi
-                                                                    @elseif ($item->status == 3)
-                                                                        Ditolak
-                                                                    @endif%0A
-                                                                Keterangan: {{ $item->catatan ?: '-' }}%0A%0A
-                                                                Silahkan cek pesanan anda.%0A
-                                                                Salam hangat"
-                                                                target="_blank">
-                                                                <i class="bx bx-edit-alt me-1"></i> WhatsApp
-                                                             </a>
-
+                                                            <a class="dropdown-item"
+                                                            href="https://api.whatsapp.com/send?phone={{  $item->user->no_tlfn  }}&text=
+                                                            Selamat Saya dari admin Booked Weeding Ingin memberi tahu bahwa pesanan anda dengan data:%0A
+                                                            No Transaksi: {{ $item->invoice }}%0A
+                                                            Alamat: {{ $item->user->alamat }}%0A
+                                                            Nama Pembeli: {{ $item->user->name }}%0A
+                                                            Jumlah Bayar: Rp {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}%0A
+                                                            Nama Product: {{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}%0A
+                                                            Status: @if ($item->status == 1)
+                                                                    Belum Konfirmasi
+                                                                @elseif ($item->status == 2)
+                                                                    Sudah Dikonfirmasi
+                                                                @elseif ($item->status == 3)
+                                                                    Ditolak
+                                                                @endif%0A
+                                                            Keterangan: {{ $item->catatan ?: '-' }}%0A%0A
+                                                            Silahkan cek pesanan anda.%0A
+                                                            Salam hangat"
+                                                            target="_blank">
+                                                            <i class="bx bx-edit-alt me-1"></i> WhatsApp
+                                                         </a>
+                                                         
 
                                                     </div>
                                                 </div>

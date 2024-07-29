@@ -8,6 +8,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\VendorController;
 
 /*
@@ -72,6 +73,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::post('/dashboard/vendor', [VendorController::class, 'store'])->name('admin.vendor.store');
     Route::put('/dashboard/vendor/{id}', [VendorController::class, 'update'])->name('admin.vendor.update');
     Route::delete('/dashboard/vendor/{id}', [VendorController::class, 'delete'])->name('admin.vendor.delete');
+
+    Route::get('/dashboard/user', [PenggunaController::class, 'index'])->name('admin.pengguna.index');
 
 
     });

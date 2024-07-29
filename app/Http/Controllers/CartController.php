@@ -34,8 +34,9 @@ class CartController extends Controller
 
 
         $total = $cart->sum(function ($carts) {
-            return $carts->paket->harga;
+            return $carts->paket->harga ?? 0;
         });
+        
 
         return view('content.dashboard.landing.cart', compact('cart','total'));
     }
@@ -81,8 +82,9 @@ public function pesananBerhasil(Request $request)
 
 
          $total = $cart->sum(function ($carts) {
-             return $carts->paket->harga;
-         });
+            return $carts->paket->harga ?? 0;
+        });
+        
 
 
         return view('content.dashboard.landing.checkout',  compact('cart','total'));

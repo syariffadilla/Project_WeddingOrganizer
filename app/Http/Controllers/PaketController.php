@@ -325,25 +325,42 @@ class PaketController extends Controller
      * @param  \App\Models\Paket  $paket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Paket $paket)
-    {
-        // @dd($paket);
-        $gambarFields = ['foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'foto6'];
+    public function destroy(Request $request)
+{
+    // Debugging untuk melihat isi request
+    // dd($request->all());
 
-        foreach ($gambarFields as $field) {
-            $newImage = $request->file($field);
+    // Ambil ID paket dari request
+    $paketId = $request->input('Paket');
 
-            if ($newImage) {
-                if (!empty($paket->$field)) {
-                    // Hapus File lama
-                    $imgPath = public_path() . '/paket/' . $paket->$field;
+    // Cari paket berdasarkan ID
+    $paket = Paket::findOrFail($paketId);
+
+    // Daftar field gambar yang mungkin perlu dihapus
+    $gambarFields = ['foto1', 'foto2', 'foto3', 'foto4', 'foto5', 'foto6'];
+
+    // Loop melalui setiap field gambar
+    foreach ($gambarFields as $field) {
+        // Cek apakah ada file gambar dalam request
+        $newImage = $request->file($field);
+
+        // Jika ada file gambar
+        if ($newImage) {
+            // Cek apakah ada file gambar lama yang perlu dihapus
+            if (!empty($paket->$field)) {
+                // Hapus file gambar lama
+                $imgPath = public_path('paket') . '/' . $paket->$field;
+                if (file_exists($imgPath)) {
                     unlink($imgPath);
                 }
             }
         }
-
-        $paket->delete();
-
-        return redirect()->route('admin.dashboard.paket')->with('success', 'Data Berhasil Dihapus');
     }
+
+    // Hapus data paket dari database
+    $paket->delete();
+
+    // Redirect ke halaman dashboard dengan pesan sukses
+    return redirect()->route('admin.dashboard.paket')->with('success', 'Data Berhasil Dihapus');
+}
 }
