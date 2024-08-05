@@ -7,13 +7,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.transaksi.cari') }}" method="POST">
+                <form action="#" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col mb-3">
-                            <label for="nameBasic" class="form-label">Nomor Transaksi</label>
+                            <label for="nameBasic" class="form-label">Nomor Invoice</label>
                             <input type="text" id="nameBasic" class="form-control" name="noTransaksi"
-                                placeholder="Masukan Nomor Transaksi" />
+                                placeholder="Masukan Nomor Invoice" />
                         </div>
                     </div>
 

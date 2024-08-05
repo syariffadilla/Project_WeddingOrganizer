@@ -86,7 +86,7 @@
                                             <div class="col-md-6">
                                                 <div class="rr-checkout-input">
                                                     <label>Kota / Kab</label>
-                                                    <input type="text" placeholder="Kota / Kab" name="kota">
+                                                    <input type="text" placeholder="Kota / Kab" name="kota" value="{{ Auth::user()->kabupaten }}">
 
 
                                                 </div>
@@ -94,7 +94,7 @@
                                             <div class="col-md-6">
                                                 <div class="rr-checkout-input">
                                                     <label>Kecmatan</label>
-                                                    <input type="text" placeholder="Kecmatan" name="kecamatan">
+                                                    <input type="text" placeholder="Kecmatan" name="kecamatan" value="{{ Auth::user()->kecamatan }}">
                                                 </div>
                                             </div>
 
@@ -149,13 +149,13 @@
                                         <input type="hidden" name="paket_id" value="">
                                     @endif
                                 @endforeach
-                                
+
                                 <!-- subtotal -->
                                 <li class="rr-order-info-list-subtotal">
                                     <span>Subtotal</span>
                                     <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
                                 </li>
-                                
+
                                     <!-- shipping -->
                                     <li class="rr-order-info-list-shipping">
                                         <span>Biaya Layanan</span>

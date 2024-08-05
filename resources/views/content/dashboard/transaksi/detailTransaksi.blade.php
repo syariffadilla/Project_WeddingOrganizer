@@ -32,17 +32,17 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Nama Paket</label>
-                                            <input type="text" id="nameExLarge" name="nama_paket"
+                                            <input type="text" readonly id="nameExLarge" name="nama_paket"
                                                 class="form-control" value=" PAKET RP. 12.000.000"  />
                                         </div>
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Harga</label>
-                                            <input type="text" id="nameExLarge" name="harga"
+                                            <input type="text" readonly id="nameExLarge" name="harga"
                                                 class="form-control" value="{{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}"  />
                                         </div>
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Tanggal</label>
-                                            <input type="text" id="nameExLarge" name="harga"
+                                            <input type="text" readonly id="nameExLarge" name="harga"
                                                 class="form-control" value="{{ $item->tanggal_booking }}"  />
                                         </div>
 
@@ -50,16 +50,16 @@
                                     <div class="row">
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">BANK</label>
-                                            <input type="text" id="nameExLarge" name="nama_paket" class="form-control" value="{{ $item->bank }}" readonly />
+                                            <input type="text" readonly id="nameExLarge" name="nama_paket" class="form-control" value="{{ $item->bank }}" readonly />
                                         </div>
                                         <div class="col mb-3">
                                             <label for="dpExLarge" class="form-label">DP 30%</label>
-                                            <input type="text" id="dpExLarge" name="harga" class="form-control" value="{{ number_format($item->harga * 0.3, 0, ',', '.') }}" readonly />
+                                            <input type="text" readonly id="dpExLarge" name="harga" class="form-control" value="{{ number_format($item->harga * 0.3, 0, ',', '.') }}" readonly />
                                         </div>
-                                        
+
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Tanggal</label>
-                                            <input type="text" id="nameExLarge" name="harga"
+                                            <input type="text" readonly id="nameExLarge" name="harga"
                                                 class="form-control" value="{{ $item->tanggal_booking }}"  />
                                         </div>
 
@@ -83,17 +83,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6 mb-3">
-                                        <div class="mb-3">
-                                            <label for="formFile" class="form-label">Foto Bukti</label>
-                                            <input class="form-control" type="file" name="foto1"
-                                                id="formFile"  />
-                                                <img src="{{ asset('paket/' . $item->bukti_tf) }}"
-                                                alt="PAKET RP. 12.000.000" class="mt-1" height="50%"
-                                                width="50%">
-                                        </div>
 
-                                    </div>
 
 
 
@@ -102,6 +92,30 @@
 
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-6 mb-3">
+                                        <div class="mb-3">
+                                            <label for="formFile" class="form-label">Foto Bukti</label>
+
+                                                <img src="{{ asset('bukti_tf/1721360332.png' )}}"
+                                                alt="PAKET RP. 12.000.000" class="mt-1" height="50%"
+                                                width="50%">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Keterangan User</label>
+                                            <textarea class="form-control" name="keterangan" id="exampleFormControlTextarea1" rows="5" readonly>{{ $item->catatan }}</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Keterangan Untuk User</label>
+                                            <textarea class="form-control" name="keteranganAdmin" id="exampleFormControlTextarea1" rows="5">{{ $item->cacatan_admin	 ?: 'Belum Ada Catatan' }}
+                                            </textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
                                 {{-- <div class="tab-pane fade" id="navs-pills-top-messages" role="tabpanel">
                                 <div id="summernote"></div>
                             </div> --}}

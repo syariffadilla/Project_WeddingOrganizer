@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\VendorController;
 
 /*
@@ -44,10 +45,11 @@ Route::group(['prefix'=>'user', 'middleware'=>['isUser','auth']], function(){
     Route::delete('/cart/{id}', 'CartController@destroy')->name('cart.destroy');
     Route::post('/check-date-availability', [App\Http\Controllers\CartController::class, 'checkDateAvailability'])->name('check.date.availability');
 
-
-
     Route::get('/checkout', [App\Http\Controllers\CartController::class, 'checkoutIndex'])->name('checkout.user');
     Route::get('/pesanan-berhasil', [App\Http\Controllers\CartController::class, 'pesananBerhasil'])->name('pesanan.berhasil');
+    Route::get('/dashboard/user', [App\Http\Controllers\LandingController::class, 'dashboardUser'])->name('dashboardUser');
+    Route::get('/dashboard/user/pesanan', [App\Http\Controllers\LandingController::class, 'TransaksiUser'])->name('TransaksiUser');
+    Route::patch('/dashboard/user/{user}', [LandingController::class, 'update'])->name('user.pengguna.update');
 
 
 
@@ -66,6 +68,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
 
     Route::get('/dashboard/transaksi', [App\Http\Controllers\BookingController::class, 'index'])->name('admin.transaksi');
     Route::get('/dashboard/transaksi/konfirmasi', [App\Http\Controllers\BookingController::class, 'indexKonfirmasi'])->name('admin.transaksi.2');
+    Route::get('/dashboard/transaksi/proses', [App\Http\Controllers\BookingController::class, 'dataBelumKonfrimasi'])->name('admin.transaksi.1');
+    Route::get('/dashboard/transaksi/toalk', [App\Http\Controllers\BookingController::class, 'datatolak'])->name('admin.transaksi.3');
     Route::post('/transaksi/konfirmasi/{id}' , [BookingController::class, 'konfirmasi'])->name('admin.transaksi.konfirmasi');
 
 
@@ -75,6 +79,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::delete('/dashboard/vendor/{id}', [VendorController::class, 'delete'])->name('admin.vendor.delete');
 
     Route::get('/dashboard/user', [PenggunaController::class, 'index'])->name('admin.pengguna.index');
+    Route::get('/dashboard/userAdmin', [PenggunaController::class, 'index2'])->name('admin.pengguna.index2');
+    Route::delete('/dashboard/user/{user}', [PenggunaController::class, 'destroy'])->name('admin.pengguna.destroy');
+    Route::patch('/dashboard/user/{user}', [PenggunaController::class, 'update'])->name('admin.pengguna.update');
+    Route::post('/dashboard/user', [PenggunaController::class, 'store'])->name('admin.pengguna.store');
+
+
+    Route::get('/dashboard/team', [TeamController::class, 'index'])->name('admin.team.index');
+    Route::post('/dashboard/team', [TeamController::class, 'store'])->name('admin.team.store');
 
 
     });

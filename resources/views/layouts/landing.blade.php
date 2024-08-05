@@ -1,9 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
-
-<!-- Mirrored from html.rrdevs.net/brulloft/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Jun 2024 13:23:46 GMT -->
-
 <head>
     <meta charset="utf-8">
     <title>PASW – Home</title>
@@ -25,11 +21,11 @@
     <link rel="stylesheet" href="{{ asset('landing/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('landing/assets/css/main.css') }}">
 
+    @stack('css-tambahan')
+
     @yield('css-tambahan')
 </head>
-
 <body>
-
     <!-- preloader start -->
     <div id="loading">
         <div class="preloader-close">x</div>
@@ -42,8 +38,7 @@
             </div>
         </div>
     </div>
-    <!-- preloader start -->
-
+    <!-- preloader end -->
 
     @include('layouts.landing.navbar')
 
@@ -51,13 +46,9 @@
 
     @include('layouts.landing.footer')
 
-
-
     @yield('js-tambahan')
 
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script>
         $(document).ready(function() {
             // Fungsi untuk memperbarui jumlah item dalam keranjang
@@ -84,6 +75,7 @@
         });
     </script>
 
+    @stack('js-tambahan')
 
     <!-- Sisanya dari skrip JavaScript Anda -->
     <script src="{{ asset('landing/assets/js/vendor/waypoints.js') }}"></script>
@@ -98,8 +90,5 @@
     <script src="{{ asset('landing/assets/js/ajax-form.js') }}"></script>
     <script src="{{ asset('landing/assets/js/imagesloaded-pkgd.js') }}"></script>
     <script src="{{ asset('landing/assets/js/main.js') }}"></script>
-
 </body>
-
-
 </html>

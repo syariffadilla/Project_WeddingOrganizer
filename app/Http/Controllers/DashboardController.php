@@ -40,9 +40,11 @@ class DashboardController extends Controller
         $data['bookingPending'] = Booking::where('status', '1')->count();
         $data['bookingKonfirmasi'] = Booking::where('status', '2')->count();
         $data['bookingTolak'] = Booking::where('status', '3')->count();
+        $data['pelanggan'] = User::where('role', '2')->count();
+        $data['admin'] = User::where('role', '1')->count();
 
 
-        $data['totalRupiah'] = Booking::where('status', '3')->count();
+        $data['totalRupiah'] = Booking::where('status', '2')->count();
 
 
 

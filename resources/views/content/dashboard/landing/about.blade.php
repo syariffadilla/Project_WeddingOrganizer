@@ -1,5 +1,63 @@
 @extends('layouts.landing')
 
+
+@push('css-tambahan')
+<style>
+    .aboutgallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .gallery-item {
+        flex: 1 1 calc(25% - 10px);
+        box-sizing: border-box;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .zoomed-image {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .zoomed-image img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+    }
+
+    .zoomed-image.active {
+        display: flex;
+    }
+
+    .zoomed-image span {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+@endpush
+
+
+
 @section('main')
 
 <main>
@@ -240,79 +298,77 @@
     </section>
     <!-- service-3 area end -->
     <!-- project-slider area start -->
-    <section class="rr-project-slider-area rr-project-slider-bg p-relative fix pt-120">
-       <div class="container-fluid">
-          <div class="row gx-30">
-             <div class="col-lg-12">
-                <div class="rr-section-title-wrapper mb-40 text-center p-relative z-index-3">
-                   <span class="rr-section-subtitle wow rrfadeRight" data-wow-duration=".9s" data-wow-delay=".5s">Our
-                      Projects</span>
-                   <h3 class="rr-section-title wow rrfadeLeft" data-wow-duration=".9s" data-wow-delay=".7s">Our
-                      Amazing Work</h3>
-                </div>
-             </div>
-          </div>
-          <div class="swiper-container rr-project-active">
-             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                   <div class="rr-project-slider-item wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">
-                      <div class="rr-project-slider-thumb">
-                         <img src="{{('landing/assets/img/project/image.jpg')}}" alt="">
+    <section class="rr-service-area pt-20 pb-50 p-relative fix">
+        <div class="rr-service-shap">
+           <img src="{{asset('landing/assets/img/service/shape.png')}}" alt="img">
+        </div>
+        <div class="container">
+           <div class="row gx-30">
+              <div class="rr-section-title-wrapper mb-40 text-center">
+                 <span class="rr-section-subtitle wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".3s">Galery</span>
+                 <h3 class="rr-section-title wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".5s">Apa saja jasa yang kami miliki?</h3>
+              </div>
+           </div>
+           <div class="row gx-30">
+            <div class="rr-footer-widget footer-cols-3">
+
+                <div class="rr-footer__widget-gallery-wrap">
+                   <div class="row gx-5">
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img.jpg')}}" alt="image not found">
+                               <span><i class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
-                      <div class="rr-project-slider-content text-center">
-                         <h3 class="rr-project-slider-title"><a href="project-details.html">Wedding Ring</a></h3>
-                         <span>Adipiscing mauris sed metus dictum</span>
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-2-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img-2.jpg')}}" alt="image not found">
+                               <span><i class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
-                   </div>
-                </div>
-                <div class="swiper-slide">
-                   <div class="rr-project-slider-item wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".4s">
-                      <div class="rr-project-slider-thumb">
-                         <img src="{{('landing/assets/img/project/image1.jpg')}}" alt="">
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-3-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img-3.jpg')}}" alt="image not found">
+                               <span><i class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
-                      <div class="rr-project-slider-content text-center">
-                         <h3 class="rr-project-slider-title"><a href="project-details.html">Wedding Bliss</a></h3>
-                         <span>Adipiscing mauris sed metus dictum</span>
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-4-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img-4.jpg')}}" alt="image not found">
+                               <span><i class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
-                   </div>
-                </div>
-                <div class="swiper-slide">
-                   <div class="rr-project-slider-item wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".5s">
-                      <div class="rr-project-slider-thumb">
-                         <img src="{{('landing/assets/img/project/image2.jpg')}}" alt="">
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-5-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img-11.jpg')}}" alt="image not found">
+                               <span><i class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
-                      <div class="rr-project-slider-content text-center">
-                         <h3 class="rr-project-slider-title"><a href="project-details.html">Wedding Dressup</a></h3>
-                         <span>Adipiscing mauris sed metus dictum</span>
-                      </div>
-                   </div>
-                </div>
-                <div class="swiper-slide">
-                   <div class="rr-project-slider-item wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".6s">
-                      <div class="rr-project-slider-thumb">
-                         <img src="{{('landing/assets/img/project/image3.jpg')}}" alt="">
-                      </div>
-                      <div class="rr-project-slider-content text-center">
-                         <h3 class="rr-project-slider-title"><a href="project-details.html">Decoration Plan</a></h3>
-                         <span>Adipiscing mauris sed metus dictum</span>
-                      </div>
-                   </div>
-                </div>
-                <div class="swiper-slide">
-                   <div class="rr-project-slider-item wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".7s">
-                      <div class="rr-project-slider-thumb">
-                         <img src="{{('landing/assets/img/project/image4.jpg')}}" alt="">
-                      </div>
-                      <div class="rr-project-slider-content text-center">
-                         <h3 class="rr-project-slider-title"><a href="project-details.html">Made With Love</a></h3>
-                         <span>Adipiscing mauris sed metus dictum</span>
+                      <div class="col-xl-4 col-lg-4 col-md-3 col-4  p-1">
+                         <div class="rr-footer__widget-gallery p-relative">
+                            <a href="{{asset('landing/assets/img/gallery/img-6-xl.jpg')}}" class="our-gallery__item popup-image">
+                               <img src="{{asset('landing/assets/img/gallery/img-6.jpg')}}" alt="image not found"><span><i
+                                     class="fa-solid fa-plus"></i></span>
+                            </a>
+                         </div>
                       </div>
                    </div>
                 </div>
              </div>
-          </div>
-       </div>
-    </section>
+
+           </div>
+        </div>
+     </section>
     <!-- project-slider area end -->
     <!-- rr-testimonial-single-single area start -->
     <div class="rr-testimonial-single-area gray-bg fix">
@@ -369,6 +425,8 @@
        </div>
     </div>
     <!-- rr-testimonial-single-single area end -->
+
+
    <!-- brand area end -->
    <section class="rr-brand-area pb-120 fix">
     <div class="container">
@@ -413,3 +471,32 @@
 
 
 @endsection
+
+
+@push('js-tambahan')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const zoomedImage = document.getElementById('zoomedImage');
+        const zoomedImageContent = document.getElementById('zoomedImageContent');
+        const closeZoom = document.getElementById('closeZoom');
+
+        document.querySelectorAll('.aboutgallery .gallery-item img').forEach(image => {
+            image.addEventListener('click', () => {
+                zoomedImageContent.src = image.src;
+                zoomedImage.classList.add('active');
+            });
+        });
+
+        closeZoom.addEventListener('click', () => {
+            zoomedImage.classList.remove('active');
+        });
+
+        zoomedImage.addEventListener('click', (e) => {
+            if (e.target === zoomedImage) {
+                zoomedImage.classList.remove('active');
+            }
+        });
+    });
+</script>
+@endpush
+

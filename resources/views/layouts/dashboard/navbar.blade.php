@@ -12,7 +12,11 @@ id="layout-navbar">
 
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+        @if (Auth::user()->role == 2)
+        <h4>DASHBOARD USER</h4>
+        @else
         <h4>ADMIN DASHBOARD</h4>
+        @endif
         <!-- Search -->
         {{-- <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">

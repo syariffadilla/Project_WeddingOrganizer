@@ -7,13 +7,13 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span><span
-                    class="text-muted fw-light">Transaksi/</span>Data Transaksi </h4>
+                    class="text-muted fw-light">Transaksi/</span>{{ $title}} </h4>
 
             <!-- Bordered Table -->
             <div class="card">
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="card-header">Data Transaksi<Table></Table>
+                        <h5 class="card-header">{{ $title}}<Table></Table>
                         </h5>
                     </div>
                     <div class="col-6">
@@ -25,7 +25,7 @@
                     </div>
 
 
-                    {{-- @include('contents.dashboard.transaksi.cariTransaksi') --}}
+                    @include('content.dashboard.transaksi.cariTransaksi')
                     {{-- <div>
                 <label for="html5-search-input" class="text-end">Search</label>
                         <div class="col-3 float-end pr-4">
@@ -43,11 +43,13 @@
                                 <thead class="mt-3">
                                     <tr>
                                         <th class="text-center">No</th>
+                                        <th>Invoice</th>
                                         <th>Pembeli</th>
                                         <th>User</th>
-                                        <th>Paket</th>
+
                                         <th>Harga</th>
-                                        <th>Keterangan</th>
+                                        <th>Status</th>
+                                        <th>Keterangan User</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -56,71 +58,68 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach ($data as $item)
-                                        <tr>
-                                            <td class="col-1 text-center">{{ $no++ }}</td>
-                                            <td>{{ $item->user->name }}</td>
-                                            <td>{{ $item->paket->nama_paket }}</td>
-                                            <td>Rp {{ number_format($item->paket->harga, 0, ',', '.') }}</td>
-                                            <td>
-                                                @if ($item->status == 0)
-                                                    Belum Dikonfirmasi
-                                                @elseif ($item->status == 1)
-                                                    Sudah Dikonfirmasi
-                                                @elseif ($item->status == 2)
-                                                    Sedang Diproses
-                                                @elseif ($item->status == 3)
-                                                    Sedang Dikirim
-                                                @elseif ($item->status == 4)
-                                                    Sudah Diterima
-                                                @elseif ($item->status == 5)
-                                                    Ditolak
-                                                @endif
+                                    @foreach ($booking as $item)
+                                    <tr>
+                                        <td class="col-1 text-center">{{ $no++ }}</td>
+                                        <td>{{ $item->invoice  }}</td>
+                                        <td>{{ $item->user->name ?? 'Nama tidak tersedia' }}</td>
+                                        <td>{{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}</td>
+                                        <td>Rp {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}</td>
+
+                                        <td>
+                                            @if ($item->status == 1)
+                                                Belum Dikonfirmasi
+                                            @elseif ($item->status == 2)
+                                                Sudah Dikonfirmasi
+                                           @elseif ($item->status == 3)
+                                                Ditolak
+                                            @endif
 
 
-                                            </td>
-                                            <td>{{ $item->keterangan ?: '-' }} </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                        data-bs-toggle="dropdown">
-                                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                                    </button>
-                                                    <div class="dropdown-menu">
-                                                        <a class="dropdown-item" type="button" data-bs-toggle="modal"
-                                                    data-bs-target="#editModalKat{{ $item->booking_id }}"><i
-                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                            <i class="bx bx-edit-alt me-1"></i> Konfirmasi</a>
-                                                        <a class="dropdown-item" type="button" data-bs-toggle="modal"
-                                                            data-bs-target="#HapusTransaksi{{ $item->id }}"><i
-                                                                class="bx bx-trash me-1"></i> Hapus</a>
-                                                                <a class="dropdown-item"
-                                                                href="https://api.whatsapp.com/send?phone={{ $item->user ? $item->user->no_hp : '' }}&text=
-                                                                Selamat Saya dari admin Booked Weeding Ingin memberi tahu bahwa pesanan anda dengan data:%0A
-                                                                No Transaksi: {{ $item->no_transaksi }}%0A
-                                                                Alamat: {{ $item->alamat }}%0A
-                                                                Nama Pembeli: {{ $item->user ? $item->user->name : 'User Not Found' }}%0A
-                                                                Jumlah Bayar: Rp {{ number_format($item->total_transaksi, 0, ',', '.') }}%0A
-                                                                Nama Product: {{ $item->product ? $item->product->nama_prod : 'Product Not Found' }}%0A
-                                                                Status: @if ($item->status == 0)
-                                                                        Belum Konfirmasi
-                                                                    @elseif ($item->status == 1)
-                                                                        Sudah Dikonfirmasi
-                                                                    @elseif ($item->status == 2)
-                                                                        Ditolak
-                                                                    @endif%0A
-                                                                Keterangan: {{ $item->keterangan ?: '-' }}%0A%0A
-                                                                Silahkan cek pesanan anda.%0A
-                                                                Salam hangat"
-                                                                target="_blank">
-                                                                <i class="bx bx-edit-alt me-1"></i> WhatsApp
-                                                             </a>
+                                        </td>
+                                        <td>{{ $item->catatan ?: '-' }} </td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown">
+                                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" type="button" data-bs-toggle="modal"
+                                                data-bs-target="#editModalKat{{ $item->booking_id }}"><i
+                                                    class="bx bx-edit-alt me-1"></i> Konfirmasi</a>
 
 
-                                                    </div>
+<a class="dropdown-item"
+   href="https://api.whatsapp.com/send?phone={{ $item->user->no_tlfn ?? '-' }}&text=
+   Selamat,%0A
+   Saya dari admin Booked Weeding ingin memberi tahu bahwa pesanan anda dengan data sebagai berikut:%0A
+   No Transaksi: {{ $item->invoice }}%0A
+   Alamat: {{ $item->user->alamat ?? 'Tidak tersedia' }}%0A
+   Nama Pembeli: {{ $item->user->name ?? 'Tidak tersedia' }}%0A
+   Jumlah Bayar: Rp {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}%0A
+   Nama Product: {{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}%0A
+   Status: @if ($item->status == 1)
+             Belum Konfirmasi
+           @elseif ($item->status == 2)
+             Sudah Dikonfirmasi
+           @elseif ($item->status == 3)
+             Ditolak
+           @endif%0A
+   Keterangan: {{ $item->catatan ?: '-' }}%0A
+   Catatan Admin: [Tambahkan catatan admin di sini]%0A%0A
+   Silahkan cek pesanan anda.%0A
+   Salam hangat"
+   target="_blank">
+   <i class="bx bx-edit-alt me-1"></i> WhatsApp
+</a>
+
+
                                                 </div>
-                                            </td>
-                                        </tr>
+                                            </div>
+                                        </td>
+
+                                    </tr>
 
                                         @include('content.dashboard.transaksi.detailTransaksi')
                                         {{-- @include('contents.dashboard.transaksi.hapus') --}}

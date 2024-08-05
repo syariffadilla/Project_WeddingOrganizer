@@ -15,31 +15,48 @@ class BookingController extends Controller
     public function index()
     {
         $booking = Booking::all();
-        // Load associated data for display
-        $data = Booking::with(['user', 'paket', 'vendor1', 'vendor2', 'vendor3', 'vendor4', 'vendor5'])
-        ->get();
 
-        // $user = Auth::user();
+
 
         // dd($data);
 
-        return view('content.dashboard.transaksi.index', compact('booking', 'data'));
+        return view('content.dashboard.transaksi.index', compact('booking'));
     }
 
 
+    public function dataBelumKonfrimasi(){
+
+        // $user = Auth::user();
+        $booking = Booking::where('status', 1)->get();
+
+        $title = 'Belum Konfirmasi';
+
+        return view('content.dashboard.transaksi.index1', compact('booking', 'title'));
+
+    }
+
+    public function datatolak(){
+
+        // $user = Auth::user();
+        $booking = Booking::where('status', 3)->get();
+
+        $title = 'Ditolak';
+
+              return view('content.dashboard.transaksi.index1', compact('booking', 'title'));
+
+
+    }
+
     public function indexKonfirmasi()
     {
-        $booking = Booking::all();
-        // Load associated data for display
-        $data = Booking::with(['user', 'paket', 'vendor1', 'vendor2', 'vendor3', 'vendor4', 'vendor5'])
-        ->where('status', '=', 2)
-        ->get();
+         // $user = Auth::user();
+         $booking = Booking::where('status', 2)->get();
+
+         $title = 'Sudah Konfirmasi';
 
 
-        
+              return view('content.dashboard.transaksi.index1', compact('booking', 'title'));
 
-
-        return view('content.dashboard.transaksi.index1', compact('booking', 'data'));
     }
 
 
@@ -57,6 +74,7 @@ class BookingController extends Controller
 
             // Update status transaksi
             $transaksi->status = $request->konfirmasi;
+            $transaksi->cacatan_admin = $request->keteranganAdmin;
 
             // Simpan perubahan
             $transaksi->save();

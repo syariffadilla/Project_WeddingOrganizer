@@ -124,7 +124,7 @@
                </div>
                <div class="col-xxl-5 col-xl-5 col-lg-">
                   <div class="rr-header-2-top-info d-flex align-items-center justify-content-end text-end">
-                    
+
                      <div class="rr-header-main-social d-flex align-items-center">
                         <div class="rr-header-social ml-20">
                            <a href="#"><svg width="11" height="18" viewBox="0 0 11 18" fill="none"
@@ -135,8 +135,8 @@
                                     stroke-linejoin="round" />
                               </svg>
                            </a>
-                         
-                          
+
+
                            <a href="#"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                  <path
@@ -179,7 +179,7 @@
                            <li><a href="{{route('utama')}}">Home</a></li>
                            <li><a href="{{route('about')}}">about us</a></li>
                            <li><a href="{{route('paketLanding')}}">Paket</a></li>
-                        
+
                            <li><a href="contact.html">Contact</a></li>
                            @guest
                            <li class="has-dropdown">
@@ -191,7 +191,7 @@
                                 </ul>
                             @else
                         </li>
-                        <li><a href="">{{ Auth::user()->name }}</a></li>
+                        <li><a href="{{route('dashboardUser')}}">Dashboard</a></li>
                         <li>
                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                @csrf
@@ -200,7 +200,7 @@
                                Logout
                            </a>
                        </li>
-                       
+
                                 <!-- Tambahkan dropdown atau menu tambahan jika diperlukan -->
                             @endguest
 
@@ -238,7 +238,7 @@
                         <a class="rr-btn" href="{{'paketLanding'}}"><span>Book Now</span> <i
                               class="fa-sharp fa-solid fa-arrow-right"></i></a>
                      </div>
-                     
+
                      <div class="rr-header-bar d-xl-none">
                         <button class="rr-menu-bar"><i class="fa-solid fa-bars"></i></button>
                      </div>

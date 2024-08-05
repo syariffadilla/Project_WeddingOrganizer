@@ -80,24 +80,24 @@ class RegisterController extends Controller
             'alamat' => $data['alamat'],
             'role' => 2,
             'password' => Hash::make($data['password']),
-            'avatar' => null, // Set a default value or allow the field to be nullable
+            'avatar' => 'null', // Set a default value or allow the field to be nullable
         ]);
-    
+
         // Handle avatar upload
         if (request()->hasFile('avatar')) {
             $avatar = request()->file('avatar');
             $nama_avatar = 'avatar_' . time() . '.' . $avatar->getClientOriginalExtension();
             $avatar->move('paket/', $nama_avatar);
-    
+
             // Associate the avatar with the user
             $user->avatar = $nama_avatar;
             $user->save();
         }
-    
+
         // Return the created user
         return $user;
     }
-    
+
 
 
 

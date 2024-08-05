@@ -1,10 +1,22 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Pelanggan</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Admoin</h4>
         <!-- Bordered Table -->
         <div class="card">
-            <h5 class="card-header">Data Pelanggan</h5>
+            <div class="row">
+            <div class="col-6">
+                <h5 class="card-header">Data Admin</h5>
+            </div>
+            <div class="col-6">
+                <h5 class="text-end card-header"> <button type="button" class="btn btn-sm btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#adduser">
+                    Tambah Users
+                </button>
+            </h5>
+            </div>
+
+            </div>
             <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -27,7 +39,7 @@
         </div> --}}
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
-                    @if ($dtuser->isEmpty())
+                    @if ($team->isEmpty())
                         <div class="text-center my-2"><i>Data Kosong</i></div>
                     @else
                         <table class="table table-bordered">
@@ -44,7 +56,7 @@
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($dtuser as $index => $items)
+                                @foreach ($team as $index => $items)
                                     <tr>
                                         {{-- <td>{{$dtusers->firstitem()+$no}}</td> --}}
                                         {{-- <td>
@@ -53,8 +65,8 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $items->name }}</td>
                                         <td>{{ $items->email }}</td>
-                                        @if ($items->role == 2)
-                                            <td>Pelanggan</td>
+                                        @if ($items->role == 1)
+                                            <td>Admoin</td>
                                         @endif
 
                                         <td>
@@ -74,9 +86,10 @@
                                             </div>
                                         </td>
                                     </tr>
-
-                                    @include('content.dashboard.users.edit')
-                                    @include('content.dashboard.users.hapus')
+{{--
+                                    @include('content.dashboard.users.edit') --}}
+                                    @include('content.dashboard.team.tambah')
+                                    {{-- @include('content.dashboard.users.hapus') --}}
                                 @endforeach
                             </tbody>
                         </table>

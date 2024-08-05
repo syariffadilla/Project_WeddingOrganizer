@@ -45,7 +45,7 @@
                                                 <th>Status</th>
                                                 <th>Keterangan User</th>
                                                 <th>Keterangan Admin</th>
-                                                <th>Whatsaap</th>
+
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -74,7 +74,7 @@
                                                 </td>
                                                 <td>{{ $item->catatan ?: '-' }} </td>
                                                 <td>{{ $item->cacatan_admin	 ?: '-' }} </td>
-                                                <td>
+                                                {{-- <td>
 
 
                                                     <a class="dropdown-item"
@@ -100,11 +100,11 @@
                                                     target="_blank">
                                                     <i class="bx bx-edit-alt me-1"></i> WhatsApp
                                                  </a>
-                                                </td>
+                                                </td> --}}
 
                                             </tr>
 
-                                                @include('content.dashboard.transaksi.detailTransaksi')
+                                                {{-- @include('content.dashboard.transaksi.detailTransaksi') --}}
                                                 {{-- @include('contents.dashboard.transaksi.hapus') --}}
                                             @endforeach
                                         </tbody>

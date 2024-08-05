@@ -1,10 +1,22 @@
 @extends('layouts.dashboard')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Pelanggan</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard/</span>Admoin</h4>
         <!-- Bordered Table -->
         <div class="card">
-            <h5 class="card-header">Data Pelanggan</h5>
+            <div class="row">
+            <div class="col-6">
+                <h5 class="card-header">Data Admin</h5>
+            </div>
+            <div class="col-6">
+                <h5 class="text-end card-header"> <button type="button" class="btn btn-sm btn-primary"
+                    data-bs-toggle="modal" data-bs-target="#adduser">
+                    Tambah User
+                </button>
+            </h5>
+            </div>
+
+            </div>
             <div class="container">
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -53,8 +65,8 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $items->name }}</td>
                                         <td>{{ $items->email }}</td>
-                                        @if ($items->role == 2)
-                                            <td>Pelanggan</td>
+                                        @if ($items->role == 1)
+                                            <td>Admoin</td>
                                         @endif
 
                                         <td>
@@ -76,6 +88,7 @@
                                     </tr>
 
                                     @include('content.dashboard.users.edit')
+                                    @include('content.dashboard.users.tambah')
                                     @include('content.dashboard.users.hapus')
                                 @endforeach
                             </tbody>

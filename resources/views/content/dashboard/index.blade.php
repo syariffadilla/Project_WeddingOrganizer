@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <span class="fw-semibold d-block mb-1">Jumlah Admin</span>
-                                <h3 class="card-title mb-2">200</h3>
+                                <h3 class="card-title mb-2">{{$admin}}</h3>
                                 {{-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small> --}}
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 <span class="fw-semibold d-block mb-1">Jumlah Pelanggan</span>
-                                <h3 class="card-title text-nowrap mb-1">200</h3>
+                                <h3 class="card-title text-nowrap mb-1">{{$pelanggan}}</h3>
                                 {{-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> --}}
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="fw-semibold d-block mb-1">Booking Selesai</span>
+                        <span class="fw-semibold d-block mb-1">Booking Konfirmasi</span>
                         <h3 class="card-title text-nowrap mb-1">{{ $bookingKonfirmasi }}</h3>
                         {{-- <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small> --}}
                     </div>
@@ -323,7 +323,7 @@
                                                                   <tr>
                                                                     <td>{{ $no++ }}</td>
                                         <td>
-                                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>{{ $bo->user->name }}</strong>
+                                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>{{ $bo->user->name ?? '-' }}</strong>
                                         </td>
                                         <td>{{ $bo->paket ? $bo->paket->nama_paket : '' }}</td>
 
