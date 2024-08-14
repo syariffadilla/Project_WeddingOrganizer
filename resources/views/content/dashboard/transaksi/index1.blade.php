@@ -49,6 +49,7 @@
 
                                         <th>Harga</th>
                                         <th>Status</th>
+                                        <th>Alasan</th>
                                         <th>Keterangan User</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -77,6 +78,7 @@
 
 
                                         </td>
+                                        <td>{{ $item->cacatan_admin ?: '-' }} </td>
                                         <td>{{ $item->catatan ?: '-' }} </td>
                                         <td>
                                             <div class="dropdown">
