@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\BankController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,8 +86,17 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::post('/dashboard/user', [PenggunaController::class, 'store'])->name('admin.pengguna.store');
 
 
-    Route::get('/dashboard/team', [TeamController::class, 'index'])->name('admin.team.index');
-    Route::post('/dashboard/team', [TeamController::class, 'store'])->name('admin.team.store');
+    Route::get('/dashboard/bank', [BankController::class, 'index'])->name('admin.bank.utama');
+    Route::post('/dashboard/bank', [BankController::class, 'store'])->name('admin.bank.store');
+    Route::patch('/dashboard/bank/{bank}', [BankController::class, 'update'])->name('admin.bank.update');
+    Route::delete('/dashboard/bank/{bank}', [BankController::class, 'destroy'])->name('admin.bank.delete');
+
+
+    Route::get('/dashboard/testimoni', [TestimoniController::class, 'index'])->name('admin.testimoni.utama');
+    Route::post('/dashboard/testimoni', [TestimoniController::class, 'store'])->name('admin.testimoni.store');
+    Route::patch('/dashboard/testimoni/{testimoni}', [TestimoniController::class, 'update'])->name('admin.testimoni.update');
+    Route::delete('/dashboard/testimoni/{testimoni}', [TestimoniController::class, 'destroy'])->name('admin.testimoni.delete');
+
 
 
     });

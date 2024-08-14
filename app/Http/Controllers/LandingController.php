@@ -58,29 +58,33 @@ class LandingController extends Controller
 
 
 
+
     public function booking(Request $request)
     {
-        // Validasi request jika diperlukan
+        // dd($request->all()); // Periksa semua data request
+
+        // Validasi request
         $request->validate([
             'paket_id' => 'required|exists:paket,paket_id',
             'booking_date' => 'required|date',
             'kecamatan' => 'required',
             'kota' => 'required',
-            'bukti_tf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk file gambar
+            'bukti_tf' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'catatan' => 'nullable|string|max:200',
+            'bank' => 'required|string|max:100',
         ]);
 
-        // Buat invoice
-        $invoice = 'INV-' . Auth::id() . '-' . time();
+         // Buat invoice
+         $invoice = 'INV-' . Auth::id() . '-' . time();
+
 
         // Simpan file gambar
         if ($request->hasFile('bukti_tf')) {
             $gambar = $request->file('bukti_tf');
             $nama_gambar = 'gambar_' . time() . '.' . $gambar->getClientOriginalExtension();
             $gambar->move(public_path('paket/'), $nama_gambar);
-        } else {
-            $nama_gambar = null;
         }
+        // dd($nama_gambar); // Periksa nama gambar
 
         // Simpan booking baru
         $booking = new Booking([
@@ -107,6 +111,8 @@ class LandingController extends Controller
             return redirect()->back()->withInput()->with('error', 'Failed to create booking');
         }
     }
+
+
 
 
     public function about()

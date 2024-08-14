@@ -48,8 +48,7 @@
                             <h3 class="rr-checkout-bill-title">Billing Details</h3>
 
                             <div class="rr-checkout-bill-form">
-                                <form action="{{ route('user.booking') }}" method="POST" enctype="multipart/form-data">
-                                    @csrf
+                                <form method="POST" action="{{ route('user.booking') }}" enctype="multipart/form-data">                                    @csrf
                                     <div class="rr-checkout-bill-inner">
                                         <div class="row">
                                             <div class="col-md-12">
@@ -188,38 +187,26 @@
                                 </ul>
                             </div>
                             <div class="rr-checkout-payment">
+                                @foreach ($bank as $bnk)
                                 <div class="rr-checkout-payment-item">
+
                                     <input type="radio" id="back_transfer" name="bank"
-                                        value="BCA 268102869 A.N SAAH">
+                                    value="{{$bnk->nama}} {{ $bnk->norek }} A.N {{ $bnk->atas_nama }}AA">
                                     <label for="back_transfer" data-bs-toggle="direct-bank-transfer">Direct Bank Transfer
                                         | </label>
-                                    <label for="back_transfer" data-bs-toggle="direct-bank-transfer">BCA 268102869 A.N
-                                        SAAH</label>
-                                    <div class="rr-checkout-payment-desc direct-bank-transfer">
-                                    </div>
-                                </div>
-                                <div class="rr-checkout-payment-item">
-                                    <input type="radio" id="back_transfer" name="bank"
-                                        value="BRI 268102869 A.N SAAH">
-                                    <label for="back_transfer" data-bs-toggle="direct-bank-transfer">Direct Bank Transfer
-                                        | </label>
-                                    <label for="back_transfer" data-bs-toggle="direct-bank-transfer">BRI 268102869 A.N
-                                        SAAH</label>
-                                    <div class="rr-checkout-payment-desc direct-bank-transfer">
-                                    </div>
-                                </div>
+                                        <label for="back_transfer" data-bs-toggle="direct-bank-transfer">{{$bnk->nama}} {{ $bnk->norek }} A.N {{ $bnk->atas_nama }}</label>
+                                            <div class="rr-checkout-payment-desc direct-bank-transfer">
+                                            </div>
+                                        </div>
+                                        @endforeach
+
 
                                 <div class="rr-checkout-payment-item">
-                                    <label for="back_transfer" data-bs-toggle="direct-bank-transfer">Upload Bukti Transfer
-                                    </label>
-
-
-                                        <input type="file" id="back_transfer" name="butki_tf" accept="image/*">
-
+                                    <label for="bukti_tf" data-bs-toggle="direct-bank-transfer">Upload Bukti Transfer</label>
+                                    <input type="file" id="bukti_tf" name="bukti_tf" accept="image/*"> <!-- Perbaiki nama field -->
                                     <div id="preview"></div>
-
-
                                 </div>
+
 
                             </div>
                             <div class="rr-checkout-agree">

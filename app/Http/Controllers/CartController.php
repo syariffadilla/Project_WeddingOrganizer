@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\Booking;
@@ -36,7 +37,7 @@ class CartController extends Controller
         $total = $cart->sum(function ($carts) {
             return $carts->paket->harga ?? 0;
         });
-        
+
 
         return view('content.dashboard.landing.cart', compact('cart','total'));
     }
@@ -68,6 +69,8 @@ public function pesananBerhasil(Request $request)
          // Mengambil user yang sedang login
          $user = Auth::user();
 
+         $bank = Bank::all();
+
          // Jika Anda memiliki relasi antara User dan Cart, misalnya dengan menggunakan Eloquent Relationship
          // Anda bisa mengambil cart dari user tersebut dengan cara seperti ini:
          // $cart = $user->cart; // Ini contoh jika menggunakan relasi 'cart' di model User
@@ -84,10 +87,10 @@ public function pesananBerhasil(Request $request)
          $total = $cart->sum(function ($carts) {
             return $carts->paket->harga ?? 0;
         });
-        
 
 
-        return view('content.dashboard.landing.checkout',  compact('cart','total'));
+
+        return view('content.dashboard.landing.checkout',  compact('cart','total', 'bank'));
 
     }
 

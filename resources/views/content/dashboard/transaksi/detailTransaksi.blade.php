@@ -33,12 +33,12 @@
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Nama Paket</label>
                                             <input type="text" readonly id="nameExLarge" name="nama_paket"
-                                                class="form-control" value=" PAKET RP. 12.000.000"  />
+                                                class="form-control" value="{{ $item->paket->nama_paket ?? 'Paket tidak tersedia' }}"  />
                                         </div>
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Harga</label>
                                             <input type="text" readonly id="nameExLarge" name="harga"
-                                                class="form-control" value="{{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}"  />
+                                                class="form-control" value="Rp. {{ number_format($item->paket->harga ?? 0, 0, ',', '.') }}"  />
                                         </div>
                                         <div class="col mb-3">
                                             <label for="nameExLarge" class="form-label">Tanggal</label>
@@ -47,43 +47,45 @@
                                         </div>
 
                                     </div>
-                                    <div class="row">
-                                        <div class="col mb-3">
-                                            <label for="nameExLarge" class="form-label">BANK</label>
-                                            <input type="text" readonly id="nameExLarge" name="nama_paket" class="form-control" value="{{ $item->bank }}" readonly />
-                                        </div>
-                                        <div class="col mb-3">
-                                            <label for="dpExLarge" class="form-label">DP 30%</label>
-                                            <input type="text" readonly id="dpExLarge" name="harga" class="form-control" value="{{ number_format($item->harga * 0.3, 0, ',', '.') }}" readonly />
-                                        </div>
+                                    @php
+                                    // Menghitung harga diskon
+                                    $harga = isset($item->paket->harga) ? floatval($item->paket->harga) : 0;
+                                    $discountedPrice = $harga * 0.3;
+                                @endphp
 
-                                        <div class="col mb-3">
-                                            <label for="nameExLarge" class="form-label">Tanggal</label>
-                                            <input type="text" readonly id="nameExLarge" name="harga"
-                                                class="form-control" value="{{ $item->tanggal_booking }}"  />
-                                        </div>
+                                <div class="row">
+                                    <div class="col mb-3">
+                                        <label for="nameExLarge" class="form-label">BANK</label>
+                                        <input type="text" readonly id="nameExLarge" name="nama_paket" class="form-control" value="{{ $item->bank }}" readonly />
+                                    </div>
 
-                                        <div class="mb-3">
-                                            <label for="defaultSelect" class="form-label">Konfirmasi Pesanan</label>
-                                            <select id="defaultSelect" class="form-select" name="konfirmasi">
-                                                @if ($item->status == 1)
+                                    <div class="col mb-3">
+                                        <label for="dpExLarge" class="form-label">DP 30%</label>
+                                        <input type="text" readonly id="dpExLarge" name="harga" class="form-control" value="Rp. {{ number_format($discountedPrice, 0, ',', '.') }}" readonly />
+                                    </div>
+
+                                    <div class="col mb-3">
+                                        <label for="nameExLarge" class="form-label">Tanggal</label>
+                                        <input type="text" readonly id="nameExLarge" name="harga" class="form-control" value="{{ $item->tanggal_booking }}" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="defaultSelect" class="form-label">Konfirmasi Pesanan</label>
+                                        <select id="defaultSelect" class="form-select" name="konfirmasi">
+                                            @if ($item->status == 1)
                                                 <option value="1">Belum Dikonfirmasi</option>
-                                                @elseif ($item->status == 2)
+                                            @elseif ($item->status == 2)
                                                 <option value="2">Sudah Dikonfirmasi</option>
-                                                @elseif ($item->status == 3)
+                                            @elseif ($item->status == 3)
                                                 <option value="3">Ditolak</option>
+                                            @endif
 
-                                                @endif
-
-
-                                                <option value="1">Belum Konfirmasi</option>
-                                                <option value="2">Sudah Dikonfirmasi</option>
-                                                <option value="3">Ditolak</option>
-
-                                            </select>
-                                        </div>
+                                            <option value="1">Belum Konfirmasi</option>
+                                            <option value="2">Sudah Dikonfirmasi</option>
+                                            <option value="3">Ditolak</option>
+                                        </select>
                                     </div>
-
+                                </div>
 
 
 
@@ -97,7 +99,7 @@
                                         <div class="mb-3">
                                             <label for="formFile" class="form-label">Foto Bukti</label>
 
-                                                <img src="{{ asset('bukti_tf/1721360332.png' )}}"
+                                                <img src="{{ asset('paket/'. $item->bukti_tf )}}"
                                                 alt="PAKET RP. 12.000.000" class="mt-1" height="50%"
                                                 width="50%">
                                         </div>

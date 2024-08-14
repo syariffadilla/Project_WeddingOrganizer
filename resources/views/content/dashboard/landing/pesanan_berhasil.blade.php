@@ -44,9 +44,11 @@
                         <div class="text-center mb-5">
                             <h2>Pesanan Berhasil!</h2>
                             <p>Admin akan mengirimkan konfirmasi pesanan melalui WhatsApp.</p>
+
+                            <img src="{{asset('berhasil.svg')}}" alt="" srcset="">
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('utama') }}" class="btn btn-primary">Kembali ke Halaman Utama</a>
+                            <a href="http://localhost:8000/user/dashboard/user/pesanan" class="btn btn-primary mb-1">Lihat Pesanan</a>
                         </div>
                     </div>
                 </div>

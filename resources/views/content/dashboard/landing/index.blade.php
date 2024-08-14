@@ -515,7 +515,7 @@
                       </div>
                    </div>
                    <div class="rr-team-content">
-                      <h4 class="rr-team-title"><a href="team-details.html">Henry D’suza</a></h4>
+                      <h4 class="rr-team-title"><a href="team-details.html">Jamaludin</a></h4>
                       <span>CEO & Founder</span>
                    </div>
                 </div>
@@ -563,7 +563,7 @@
                       </div>
                    </div>
                    <div class="rr-team-content">
-                      <h4 class="rr-team-title"><a href="team-details.html">Henry D’suza</a></h4>
+                      <h4 class="rr-team-title"><a href="team-details.html">Siti Rahayu</a></h4>
                       <span>CEO & Founder</span>
                    </div>
                 </div>
@@ -837,233 +837,73 @@
                    </svg>
                 </span>
              </div>
-             <div class="rr-testimonial-wrapper mb-50">
-                <div class="rr-testimonial-active swiper-container wow rrfadeUp" data-wow-duration=".9s"
-                   data-wow-delay=".7s">
-                   <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                         <div class="rr-testimonial-item d-flex align-items-start">
-                            <div class="rr-testimonial-thumb mr-20">
-                               <img src="{{asset('landing/assets/img/testimonial/avada.png')}}" alt="">
-                            </div>
-                            <div class="rr-testimonial-content">
-                               <div class="rr-testimonial-star">
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                               </div>
-                               <p>Lorem Ipsum available, but the majority have <br /> suffered alteration in some form
-                                  by
-                                  injected humour<br /> or randomised words which don't look even slightly
-                                  <br />believable
-                                  if you are going.
-                               </p>
-                               <h4 class="rr-testimonial-title">Eleanor Fant</h4>
-                               <span>Product designer</span>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="swiper-slide">
-                         <div class="rr-testimonial-item d-flex align-items-start">
-                            <div class="rr-testimonial-thumb mr-20">
-                               <img src="{{asset('landing/assets/img/testimonial/avada-1.png')}}" alt="">
-                            </div>
-                            <div class="rr-testimonial-content">
-                               <div class="rr-testimonial-star">
-                                  <div class="rr-testimonial-star">
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                  </div>
-                               </div>
-                               <p>Lorem Ipsum available, but the majority have <br /> suffered alteration in some form
-                                  by
-                                  injected humour<br /> or randomised words which don't look even slightly
-                                  <br />believable
-                                  if you are going.
-                               </p>
-                               <h4 class="rr-testimonial-title">Glean Philips</h4>
-                               <span>Product Manager</span>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="swiper-slide">
-                         <div class="rr-testimonial-item d-flex align-items-start">
-                            <div class="rr-testimonial-thumb mr-20">
-                               <img src="{{asset('landing/assets/img/testimonial/avada.png')}}" alt="">
-                            </div>
-                            <div class="rr-testimonial-content">
-                               <div class="rr-testimonial-star">
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                                  <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                           d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                           fill="#FFB016" />
-                                     </svg>
-                                  </span>
-                               </div>
-                               <p>Lorem Ipsum available, but the majority have <br /> suffered alteration in some form
-                                  by
-                                  injected humour<br /> or randomised words which don't look even slightly
-                                  <br />believable
-                                  if you are going.
-                               </p>
-                               <h4 class="rr-testimonial-title">Facial Care</h4>
-                               <span>Manager</span>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="swiper-slide">
-                         <div class="rr-testimonial-item d-flex align-items-start">
-                            <div class="rr-testimonial-thumb mr-20">
-                               <img src="{{asset('landing/assets/img/testimonial/avada-1.png')}}" alt="">
-                            </div>
-                            <div class="rr-testimonial-content">
-                               <div class="rr-testimonial-star">
-                                  <div class="rr-testimonial-star">
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                     <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none"
-                                           xmlns="http://www.w3.org/2000/svg">
-                                           <path
-                                              d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z"
-                                              fill="#FFB016" />
-                                        </svg>
-                                     </span>
-                                  </div>
-                               </div>
-                               <p>Lorem Ipsum available, but the majority have <br /> suffered alteration in some form
-                                  by
-                                  injected humour<br /> or randomised words which don't look even slightly
-                                  <br />believable
-                                  if you are going.
-                               </p>
-                               <h4 class="rr-testimonial-title">Glean Philips</h4>
-                               <span>Product Manager</span>
-                            </div>
-                         </div>
-                      </div>
-                   </div>
+          <!-- Testimonial Section -->
+<div class="rr-testimonial-wrapper mb-50">
+    <div class="rr-testimonial-active swiper-container wow rrfadeUp" data-wow-duration=".9s" data-wow-delay=".7s">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="rr-testimonial-item d-flex align-items-start">
+                    <div class="rr-testimonial-thumb mr-20">
+                        <img src="{{asset('landing/assets/img/testimonial/avada.png')}}" alt="Gambar Testimoni">
+                    </div>
+                    <div class="rr-testimonial-content">
+                        <div class="rr-testimonial-star">
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                        </div>
+                        <p>Tim dari Paras Ayu Sona Wedding telah membuat hari pernikahan kami benar-benar tak terlupakan. Dari pertemuan pertama hingga tarian terakhir, perhatian mereka terhadap detail, kreativitas, dan dedikasi mereka memastikan semuanya sempurna. Kami tidak bisa meminta pengalaman yang lebih baik. Sangat direkomendasikan!</p>
+                        <h4 class="rr-testimonial-title">Siti & Johny</h4>
+                        <span>Pasangan Bahagia</span>
+                    </div>
                 </div>
-             </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="rr-testimonial-item d-flex align-items-start">
+                    <div class="rr-testimonial-thumb mr-20">
+                        <img src="{{asset('landing/assets/img/testimonial/avada-1.png')}}" alt="Gambar Testimoni">
+                    </div>
+                    <div class="rr-testimonial-content">
+                        <div class="rr-testimonial-star">
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                            <span><svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0L14.6942 8.2918H23.4127L16.3593 13.4164L19.0534 21.7082L12 16.5836L4.94658 21.7082L7.64074 13.4164L0.587322 8.2918H9.30583L12 0Z" fill="#FFB016" />
+                            </svg></span>
+                        </div>
+                        <p>Kami sangat senang dengan hasil pernikahan kami, berkat Paras Ayu Sona Wedding. Mereka melampaui harapan kami dan mewujudkan visi kami dengan sempurna. Seluruh proses berjalan mulus, dan hasilnya sangat menakjubkan. Terima kasih yang sebesar-besarnya karena telah membuat hari kami seajaib yang kami impikan.</p>
+                        <h4 class="rr-testimonial-title">Jamal & Udin</h4>
+                        <span>Pengantin Bahagia</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Tambahkan testimoni lainnya jika perlu -->
+        </div>
+    </div>
+</div>
+
              <div class="rr-testimonial-swiper-dot text-center"></div>
              <div class="rr-testimonial-arrow-box">
                 <button class="testimonial-arrow-next">
@@ -1084,7 +924,7 @@
     </section>
     <!-- testimonial area end -->
 
-    
+
     <!-- brand area end -->
     <section class="rr-brand-area pb-120 fix">
        <div class="container">

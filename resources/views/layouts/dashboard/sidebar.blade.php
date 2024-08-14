@@ -84,6 +84,21 @@
                 </a>
             </li>
 
+            <!-- Paket -->
+            <li class="menu-item {{ Route::is('admin.bank.utama') ? 'active' : '' }}">
+                <a href="{{ route('admin.bank.utama') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bi bi-bank2"></i>
+                    <div data-i18n="Boxicons">Bank</div>
+                </a>
+            </li>
+            {{-- <!-- Paket -->
+            <li class="menu-item {{ Route::is('admin.dashboard.paket') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard.paket') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bi bi-emoji-kiss"></i>
+                    <div data-i18n="Boxicons">Testimoni</div>
+                </a>
+            </li> --}}
+
             <!-- Vendor -->
             <li class="menu-item {{ Route::is('admin.vendor') ? 'active' : '' }}">
                 <a href="{{ route('admin.vendor') }}" class="menu-link">
@@ -134,12 +149,12 @@
                     <div data-i18n="Boxicons">Pelanggan</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="{{ route('admin.team.index') }}" class="menu-link">
+            {{-- <li class="menu-item">
+                <a href="{{ route('admin.bank.utama') }}" class="menu-link">
                     <i class="menu-icon tf-icons bi bi-people-fill"></i>
                     <div data-i18n="Boxicons">Team</div>
                 </a>
-            </li>
+            </li> --}}
             <li class="menu-item">
                 <a href="{{ route('admin.pengguna.index2') }}" class="menu-link">
                     <i class="menu-icon tf-icons bi bi-person-circle"></i>
